@@ -179,53 +179,6 @@
     .ac-label { font-size:.63rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--orange); margin-bottom:.2rem; }
     .ac-val   { font-family:'Playfair Display',serif; font-size:1rem; color:var(--white); font-weight:700; }
 
-    /* ── HISTORY ── */
-    #history { background:var(--bg); }
-    .tl { position:relative; margin-top:3rem; padding-left:2.5rem; }
-    .tl::before {
-      content:''; position:absolute; left:10px; top:0; bottom:0;
-      width:2px; background:linear-gradient(180deg,var(--orange),var(--gold),transparent);
-    }
-    .tl-item { position:relative; padding-bottom:2.5rem; }
-    .tl-item:last-child { padding-bottom:0; }
-    .tl-dot {
-      position:absolute; left:-2.5rem; top:4px;
-      width:20px; height:20px; border-radius:50%;
-      background:var(--bg); border:2px solid var(--orange);
-    }
-    .tl-dot::after {
-      content:''; position:absolute; inset:4px; border-radius:50%;
-      background:var(--orange);
-    }
-    .tl-year {
-      font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:700;
-      color:var(--orange); margin-bottom:.25rem;
-    }
-    .tl-title {
-      font-family:'Playfair Display',serif; font-size:1rem;
-      color:var(--white); font-weight:700; margin-bottom:.3rem;
-    }
-    .tl-desc {
-      font-size:.85rem; color:var(--muted); line-height:1.75; font-weight:300;
-      max-width:520px;
-    }
-    @media(min-width:780px) {
-      .tl { padding-left:0; }
-      .tl::before { left:50%; transform:translateX(-50%); }
-      .tl-item {
-        width:50%; padding-right:2.5rem; padding-left:0;
-        text-align:right;
-      }
-      .tl-item:nth-child(even) {
-        margin-left:auto; text-align:left;
-        padding-left:2.5rem; padding-right:0;
-      }
-      .tl-dot { left:auto; right:-10px; }
-      .tl-item:nth-child(even) .tl-dot { left:-10px; right:auto; }
-      .tl-item:nth-child(even) .tl-desc { margin-left:0; }
-      .tl-desc { margin-left:auto; }
-    }
-
     /* ── ACHIEVEMENTS ── */
     #achievements { background:var(--bg2); }
     .ach-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:3rem; }
@@ -253,6 +206,46 @@
     .ach-section-desc {
       font-size:.9rem; color:var(--muted); font-weight:300; line-height:1.8;
       max-width:600px; margin-top:1rem;
+    }
+
+    /* ── EVENTS ── */
+    #events { background:var(--bg); }
+    .events-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:3rem; }
+    .event-card {
+      background:var(--bg2); border:1px solid var(--border);
+      padding:1.6rem 1.6rem; position:relative; overflow:hidden;
+      transition:border-color .3s, transform .3s; cursor:default;
+    }
+    .event-card::after {
+      content:''; position:absolute; bottom:0; left:0;
+      width:0; height:2px;
+      background:linear-gradient(90deg,var(--orange),var(--gold));
+      transition:width .4s ease;
+    }
+    .event-card:hover { border-color:var(--ob); transform:translateY(-4px); }
+    .event-card:hover::after { width:100%; }
+    .event-date {
+      font-size:.62rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
+      color:var(--gold); margin-bottom:.3rem;
+    }
+    .event-title {
+      font-family:'Playfair Display',serif; font-size:1.1rem;
+      color:var(--white); font-weight:700; margin-bottom:.3rem;
+    }
+    .event-loc {
+      font-size:.82rem; color:var(--muted); font-weight:300; margin-bottom:.5rem;
+    }
+    .event-tag {
+      display:inline-block; font-size:.6rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+      color:var(--orange); border:1px solid var(--ob); padding:.2rem .7rem;
+      background:rgba(255,107,0,.05);
+    }
+    .event-tag.past { color:var(--muted); border-color:var(--border); background:transparent; }
+    .events-more {
+      text-align:center; margin-top:2rem;
+    }
+    @media(max-width:780px) {
+      .events-grid { grid-template-columns:1fr; }
     }
 
     /* ── GALLERY ── */
@@ -399,8 +392,8 @@
   </a>
   <ul class="nav-links">
     <li><a href="#about">O nás</a></li>
-    <li><a href="#history">História</a></li>
     <li><a href="#achievements">Úspechy</a></li>
+    <li><a href="#events">Udalosti</a></li>
     <li><a href="#gallery">Galéria</a></li>
     <li><a href="#contact">Kontakt</a></li>
   </ul>
@@ -483,50 +476,6 @@
   </div>
 </section>
 
-<!-- ══════════════════════ HISTORY ══════════════════════ -->
-<section id="history" class="section">
-  <div class="wrap">
-    <div class="reveal">
-      <div class="eyebrow"><span class="ey-txt">História</span></div>
-      <h2 class="s-head">Naša <em>cesta.</em></h2>
-      <p class="ach-section-desc">Od prvých skúšok až po medzinárodné pódiá — poďte sa s nami obzrieť za našou cestou.</p>
-    </div>
-
-    <div class="tl">
-      <div class="tl-item reveal d1">
-        <div class="tl-dot"></div>
-        <div class="tl-year">2019</div>
-        <div class="tl-title">Založenie kapely</div>
-        <div class="tl-desc">Big Band Storm vznikol z nadšenia niekoľkých mladých hudobníkov, ktorí chceli priniesť swing a jazz do svojho mesta.</div>
-      </div>
-      <div class="tl-item reveal d2">
-        <div class="tl-dot"></div>
-        <div class="tl-year">2020</div>
-        <div class="tl-title">Prvé vystúpenia</div>
-        <div class="tl-desc">Napriek náročným začiatkom sme odohrali prvé koncerty na miestnych podujatiach a školských akciách.</div>
-      </div>
-      <div class="tl-item reveal d1">
-        <div class="tl-dot"></div>
-        <div class="tl-year">2022</div>
-        <div class="tl-title">Prvá súťaž</div>
-        <div class="tl-desc">Prihlásili sme sa do celoslovenskej súťaže big bandov a hneď na prvý pokus sme získali zlaté pásmo.</div>
-      </div>
-      <div class="tl-item reveal d2">
-        <div class="tl-dot"></div>
-        <div class="tl-year">2024</div>
-        <div class="tl-title">Víťazstvo v kategórii</div>
-        <div class="tl-desc">Na celoslovenskej súťaži sme vyhrali svoju kategóriu a potvrdili sme si miesto medzi najlepšími mládežníckymi big bandmi na Slovensku.</div>
-      </div>
-      <div class="tl-item reveal d1">
-        <div class="tl-dot"></div>
-        <div class="tl-year">2025</div>
-        <div class="tl-title">Turné v Taliansku</div>
-        <div class="tl-desc">Absolvovali sme turné v Bologni, kde sme reprezentovali Slovensko na medzinárodnej úrovni a získali cenné skúsenosti.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ══════════════════════ ACHIEVEMENTS ══════════════════════ -->
 <section id="achievements" class="section">
   <div class="wrap">
@@ -561,6 +510,44 @@
         <div class="ach-desc">Okrem víťazstiev a zlatých pásiem sme získali aj viacero čestných uznaní a špeciálnych cien za najlepšiu interpretáciu jazzových skladieb.</div>
         <div class="ach-tag">Čestné uznania</div>
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ EVENTS ══════════════════════ -->
+<section id="events" class="section">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow"><span class="ey-txt">Udalosti</span></div>
+      <h2 class="s-head">Najbližšie <em>koncerty</em></h2>
+      <p class="ach-section-desc">Pozrite si, kde nás môžete zažiť naživo, a čo sme už za sebou.</p>
+    </div>
+
+    <div class="events-grid">
+      <div class="event-card reveal d1">
+        <div class="event-date">Jún 2026</div>
+        <div class="event-title">Letný jazzový festival</div>
+        <div class="event-loc">📍 Banská Bystrica</div>
+        <span class="event-tag">Pripravujeme</span>
+      </div>
+      <div class="event-card reveal d2">
+        <div class="event-date">September 2026</div>
+        <div class="event-title">Koncert pre školy</div>
+        <div class="event-loc">📍 Žilina</div>
+        <span class="event-tag">Pripravujeme</span>
+      </div>
+      <div class="event-card reveal d1">
+        <div class="event-date">Marec 2026</div>
+        <div class="event-title">Jarný benefičný koncert</div>
+        <div class="event-loc">📍 Bratislava</div>
+        <span class="event-tag">Uskutočnené</span>
+      </div>
+      <div class="event-card reveal d2">
+        <div class="event-date">December 2025</div>
+        <div class="event-title">Vianočný koncert</div>
+        <div class="event-loc">📍 Košice</div>
+        <span class="event-tag">Uskutočnené</span>
+      </div>
     </div>
   </div>
 </section>

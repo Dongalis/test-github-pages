@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sk">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Big Band Storm — Youth Big Band</title>
+  <title>Big Band Storm — Mládežnícky big band</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -72,14 +72,6 @@
       85%  { opacity:.1; }
       100% { opacity:0; transform:translateY(-220px) rotate(12deg); }
     }
-    /* Decorative lightning bolt */
-    .deco-bolt {
-      position:absolute; right:6%; top:12%;
-      opacity:.035; pointer-events:none;
-      animation:btPulse 5s ease-in-out infinite;
-    }
-    @keyframes btPulse { 0%,100%{opacity:.035;transform:scale(1)} 50%{opacity:.065;transform:scale(1.04)} }
-
     .hero-inner { position:relative; z-index:2; text-align:center; max-width:920px; }
     .hero-badge {
       display:inline-flex; align-items:center; gap:.5rem;
@@ -330,9 +322,9 @@
     <span class="nav-name">Big Band <span>Storm</span></span>
   </a>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#about">O nás</a></li>
+    <li><a href="#gallery">Galéria</a></li>
+    <li><a href="#contact">Kontakt</a></li>
   </ul>
 </nav>
 
@@ -341,13 +333,8 @@
   <div class="staff-bg" id="staffBg"></div>
   <div class="notes-layer" id="notesLayer"></div>
 
-  <!-- Big decorative lightning bolt — referencing "Storm" -->
-  <svg class="deco-bolt" width="300" height="520" viewBox="0 0 300 520" fill="none">
-    <polygon points="175,0 85,240 152,240 65,520 240,195 168,195 260,0" fill="#FF6B00"/>
-  </svg>
-
   <div class="hero-inner">
-    <div class="hero-badge">🎷 Youth Big Band</div>
+    <div class="hero-badge">🎷 Mládežnícky big band</div>
     <h1 class="hero-title">
       <span class="band-lbl">Big Band</span>
       <span class="storm-lbl">Storm</span>
@@ -357,16 +344,16 @@
       <span class="hd-icon">♫</span>
       <div class="hd-line hd-right"></div>
     </div>
-    <p class="hero-sub">Jazz Standards &nbsp;·&nbsp; Film Music &nbsp;·&nbsp; Modern Hits</p>
+    <p class="hero-sub">Jazzové štandardy &nbsp;·&nbsp; Filmová hudba &nbsp;·&nbsp; Moderné hity</p>
     <div class="hero-btns">
-      <a href="#about" class="btn-p">Discover Us</a>
-      <a href="#contact" class="btn-g">Get In Touch</a>
+      <a href="#about" class="btn-p">Spoznať nás</a>
+      <a href="#contact" class="btn-g">Kontaktujte nás</a>
     </div>
   </div>
 
   <div class="scroll-hint">
     <div class="sbar"></div>
-    Scroll
+    Rolujte
   </div>
 </section>
 
@@ -376,41 +363,41 @@
     <div class="about-grid">
 
       <div class="about-body reveal">
-        <div class="eyebrow"><span class="ey-txt">About Us</span></div>
-        <h2 class="s-head">Young musicians,<br><em>big sound.</em></h2>
-        <p>Big Band Storm is a <strong>youth big band</strong> that brings the energy and swing of live jazz performance to every stage. We're a group of passionate young musicians united by our love for music — from the golden age of jazz to the silver screen and beyond.</p>
-        <p>Our repertoire spans <strong>timeless jazz standards</strong>, cinematic <strong>film music</strong> from iconic soundtracks, and fresh arrangements of <strong>modern songs</strong>. While we're not a professional ensemble, we play with heart, commitment, and a whole lot of groove.</p>
-        <p>Whether it's a concert hall, a school event, or a local festival — Big Band Storm delivers a performance you won't forget.</p>
+        <div class="eyebrow"><span class="ey-txt">O nás</span></div>
+        <h2 class="s-head">Mladí hudobníci,<br><em>veľký zvuk.</em></h2>
+        <p>Big Band Storm je <strong>mládežnícky big band</strong>, ktorý prináša energiu a swing živého jazzového vystúpenia na každé pódium. Sme skupina vášnivých mladých hudobníkov spojených láskou k hudbe — od zlatej éry jazzu až po filmové plátno a ešte ďalej.</p>
+        <p>Náš repertoár zahŕňa <strong>nadčasové jazzové štandardy</strong>, <strong>filmovú hudbu</strong> z ikonických soundtrackov a svieže aranžmány <strong>moderných skladieb</strong>. Hoci nie sme profesionálny súbor, hráme srdcom, odhodlaním a poriadnou dávkou groovu.</p>
+        <p>Či už je to koncertná sála, školská akcia alebo miestny festival — Big Band Storm prináša vystúpenie, na ktoré nezabudnete.</p>
         <div class="tags">
-          <span class="tag">Jazz Standards</span>
-          <span class="tag">Film Music</span>
-          <span class="tag">Modern Songs</span>
+          <span class="tag">Jazzové štandardy</span>
+          <span class="tag">Filmová hudba</span>
+          <span class="tag">Moderné skladby</span>
           <span class="tag">Swing</span>
-          <span class="tag">Youth Band</span>
-          <span class="tag">Live Performances</span>
+          <span class="tag">Mládežnícka kapela</span>
+          <span class="tag">Živé vystúpenia</span>
         </div>
       </div>
 
       <div class="about-cards">
         <div class="acard reveal d1">
           <div class="ac-icon">🎷</div>
-          <div class="ac-label">Genre</div>
-          <div class="ac-val">Jazz &amp; Film</div>
+          <div class="ac-label">Žáner</div>
+          <div class="ac-val">Jazz a film</div>
         </div>
         <div class="acard reveal d2">
           <div class="ac-icon">🎼</div>
-          <div class="ac-label">Format</div>
+          <div class="ac-label">Formát</div>
           <div class="ac-val">Big Band</div>
         </div>
         <div class="acard reveal d2">
-          <div class="ac-icon">⚡</div>
-          <div class="ac-label">Spirit</div>
-          <div class="ac-val">Youth Energy</div>
+          <div class="ac-icon">🔥</div>
+          <div class="ac-label">Duch</div>
+          <div class="ac-val">Mládežnícka energia</div>
         </div>
         <div class="acard reveal d3">
           <div class="ac-icon">🎬</div>
-          <div class="ac-label">Repertoire</div>
-          <div class="ac-val">Film to Swing</div>
+          <div class="ac-label">Repertoár</div>
+          <div class="ac-val">Film k swingu</div>
         </div>
       </div>
 
@@ -423,40 +410,40 @@
   <div class="wrap">
     <div class="gallery-top">
       <div class="reveal">
-        <div class="eyebrow"><span class="ey-txt">Gallery</span></div>
-        <h2 class="s-head">Life on <em>stage.</em></h2>
+        <div class="eyebrow"><span class="ey-txt">Galéria</span></div>
+        <h2 class="s-head">Život na <em>pódiu.</em></h2>
       </div>
-      <p class="gallery-note reveal d1">Moments captured from our rehearsals and live performances.</p>
+      <p class="gallery-note reveal d1">Zachytili sme momenty z našich skúšok a živých vystúpení.</p>
     </div>
 
     <div class="gg reveal">
       <div class="gi">
-        <div class="gi-img"><div class="gi-fill"><span class="gi-ico">📷</span><span class="gi-lbl">Concert photo</span></div></div>
-        <div class="gi-ov"><span class="gi-cap">Full Band · Concert Night</span></div>
+        <div class="gi-img"><div class="gi-fill"><span class="gi-ico">📷</span><span class="gi-lbl">Koncert</span></div></div>
+        <div class="gi-ov"><span class="gi-cap">Celá kapela · Koncertný večer</span></div>
       </div>
       <div class="gi">
-        <div class="gi-img"><div class="gi-fill"><span class="gi-ico">🎷</span><span class="gi-lbl">Rehearsal photo</span></div></div>
-        <div class="gi-ov"><span class="gi-cap">Rehearsal Session</span></div>
+        <div class="gi-img"><div class="gi-fill"><span class="gi-ico">🎷</span><span class="gi-lbl">Skúška</span></div></div>
+        <div class="gi-ov"><span class="gi-cap">Skúška</span></div>
       </div>
       <div class="gi">
-        <div class="gi-img"><div class="gi-fill"><span class="gi-ico">🎺</span><span class="gi-lbl">Stage photo</span></div></div>
-        <div class="gi-ov"><span class="gi-cap">Saxophone Section</span></div>
+        <div class="gi-img"><div class="gi-fill"><span class="gi-ico">🎺</span><span class="gi-lbl">Pódium</span></div></div>
+        <div class="gi-ov"><span class="gi-cap">Saxofónová sekcia</span></div>
       </div>
       <div class="gi">
-        <div class="gi-img"><div class="gi-fill"><span class="gi-ico">🥁</span><span class="gi-lbl">Band photo</span></div></div>
-        <div class="gi-ov"><span class="gi-cap">Rhythm Section</span></div>
+        <div class="gi-img"><div class="gi-fill"><span class="gi-ico">🥁</span><span class="gi-lbl">Kapela</span></div></div>
+        <div class="gi-ov"><span class="gi-cap">Rytmická sekcia</span></div>
       </div>
       <div class="gi">
-        <div class="gi-img"><div class="gi-fill"><span class="gi-ico">📷</span><span class="gi-lbl">Performance photo</span></div></div>
-        <div class="gi-ov"><span class="gi-cap">Live Performance</span></div>
+        <div class="gi-img"><div class="gi-fill"><span class="gi-ico">📷</span><span class="gi-lbl">Vystúpenie</span></div></div>
+        <div class="gi-ov"><span class="gi-cap">Živé vystúpenie</span></div>
       </div>
       <div class="gi">
-        <div class="gi-img"><div class="gi-fill"><span class="gi-ico">🎵</span><span class="gi-lbl">Group photo</span></div></div>
-        <div class="gi-ov"><span class="gi-cap">After the Show</span></div>
+        <div class="gi-img"><div class="gi-fill"><span class="gi-ico">🎵</span><span class="gi-lbl">Skupina</span></div></div>
+        <div class="gi-ov"><span class="gi-cap">Po koncerte</span></div>
       </div>
     </div>
 
-    <p class="gallery-hint reveal">📸 Replace these placeholders with your own band photos when going live!</p>
+    <p class="gallery-hint reveal">📸 Tieto miesta nahraďte vlastnými fotografiami kapely pri spustení!</p>
   </div>
 </section>
 
@@ -466,16 +453,16 @@
     <div class="contact-grid">
 
       <div class="reveal">
-        <div class="eyebrow"><span class="ey-txt">Contact</span></div>
-        <h2 class="s-head">Say <em>hello.</em></h2>
-        <p class="ct-sub">We'd love to hear from you — whether it's a booking inquiry, a question about our music, or just to say hi.</p>
+        <div class="eyebrow"><span class="ey-txt">Kontakt</span></div>
+        <h2 class="s-head">Napíšte <em>nám.</em></h2>
+        <p class="ct-sub">Radi vás počujeme — či už ide o rezerváciu, otázku o našej hudbe, alebo len pozdrav.</p>
         <div class="ct-block">
-          <div class="ct-block-title">Book us for your event</div>
-          <p>Available for concerts, school events, local festivals, and special occasions. Drop us a message and we'll make it happen.</p>
+          <div class="ct-block-title">Objednajte si nás na vašu akciu</div>
+          <p>Sme k dispozícii na koncerty, školské akcie, miestne festivaly a špeciálne príležitosti. Napíšte nám a my to zariadime.</p>
         </div>
         <div class="ct-block">
-          <div class="ct-block-title">Find us online</div>
-          <p>Follow Big Band Storm on social media for updates, behind-the-scenes moments, and upcoming concert announcements.</p>
+          <div class="ct-block-title">Nájdite nás online</div>
+          <p>Sledujte Big Band Storm na sociálnych sieťach pre novinky, zákulisné momenty a oznámenia o nadchádzajúcich koncertoch.</p>
         </div>
         <div class="social-row">
           <a class="soc" href="#" title="Facebook"  aria-label="Facebook">f</a>
@@ -487,29 +474,29 @@
       <form class="form reveal d2" id="contactForm" onsubmit="submitForm(event)">
         <div class="frow">
           <div class="field">
-            <label for="f-name">Your Name</label>
-            <input type="text" id="f-name" name="name" placeholder="Jane Smith" required>
+            <label for="f-name">Vaše meno</label>
+            <input type="text" id="f-name" name="name" placeholder="Ján Novák" required>
           </div>
           <div class="field">
-            <label for="f-email">Email Address</label>
-            <input type="email" id="f-email" name="email" placeholder="you@email.com" required>
+            <label for="f-email">Emailová adresa</label>
+            <input type="email" id="f-email" name="email" placeholder="vas@email.com" required>
           </div>
         </div>
         <div class="field">
-          <label for="f-subj">Subject</label>
+          <label for="f-subj">Predmet</label>
           <select id="f-subj" name="subject">
-            <option value="booking">Concert / Event Booking</option>
-            <option value="question">General Question</option>
-            <option value="media">Press / Media</option>
-            <option value="other">Other</option>
+            <option value="booking">Rezervácia koncertu / podujatia</option>
+            <option value="question">Všeobecná otázka</option>
+            <option value="media">Tlač / Médiá</option>
+            <option value="other">Iné</option>
           </select>
         </div>
         <div class="field">
-          <label for="f-msg">Message</label>
-          <textarea id="f-msg" name="message" placeholder="Tell us about your event, question, or just say hello…" required></textarea>
+          <label for="f-msg">Správa</label>
+          <textarea id="f-msg" name="message" placeholder="Povedzte nám o vašej akcii, otázke, alebo len pozdravte…" required></textarea>
         </div>
-        <div class="form-ok" id="formOk">✓ Message sent! We'll be in touch soon.</div>
-        <button type="submit" class="btn-p" style="align-self:flex-start;">Send Message</button>
+        <div class="form-ok" id="formOk">✓ Správa odoslaná! Ozveme sa čoskoro.</div>
+        <button type="submit" class="btn-p" style="align-self:flex-start;">Odoslať správu</button>
       </form>
 
     </div>
@@ -524,7 +511,7 @@
       <div class="f-sl"></div><div class="f-sl"></div><div class="f-sl"></div>
       <div class="f-sl"></div><div class="f-sl"></div>
     </div>
-    <div class="f-copy">Youth Big Band · Jazz &amp; Film Music</div>
+    <div class="f-copy">Mládežnícky big band · Jazz a filmová hudba</div>
   </div>
 </footer>
 

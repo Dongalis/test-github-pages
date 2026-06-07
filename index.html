@@ -179,6 +179,35 @@
     .ac-label { font-size:.63rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--orange); margin-bottom:.2rem; }
     .ac-val   { font-family:'Playfair Display',serif; font-size:1rem; color:var(--white); font-weight:700; }
 
+    /* ── ACHIEVEMENTS ── */
+    #achievements { background:var(--bg2); }
+    .ach-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:3rem; }
+    .ach-card {
+      background:var(--bg); border:1px solid var(--border);
+      padding:2rem 1.8rem; position:relative; overflow:hidden;
+      transition:border-color .3s, transform .3s; cursor:default;
+    }
+    .ach-card::after {
+      content:''; position:absolute; bottom:0; left:0;
+      width:0; height:2px;
+      background:linear-gradient(90deg,var(--orange),var(--gold));
+      transition:width .4s ease;
+    }
+    .ach-card:hover { border-color:var(--ob); transform:translateY(-4px); }
+    .ach-card:hover::after { width:100%; }
+    .ach-icon  { font-size:2rem; margin-bottom:.6rem; }
+    .ach-title { font-family:'Playfair Display',serif; font-size:1.15rem; color:var(--white); font-weight:700; margin-bottom:.3rem; }
+    .ach-desc  { font-size:.88rem; color:var(--muted); line-height:1.75; font-weight:300; }
+    .ach-tag {
+      display:inline-block; font-size:.6rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+      color:var(--gold); border:1px solid rgba(200,168,75,.2); padding:.2rem .7rem; margin-top:.6rem;
+      background:rgba(200,168,75,.05);
+    }
+    .ach-section-desc {
+      font-size:.9rem; color:var(--muted); font-weight:300; line-height:1.8;
+      max-width:600px; margin-top:1rem;
+    }
+
     /* ── GALLERY ── */
     #gallery { background:var(--bg2); }
     .gallery-top { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:3rem; gap:2rem; flex-wrap:wrap; }
@@ -323,6 +352,7 @@
   </a>
   <ul class="nav-links">
     <li><a href="#about">O nás</a></li>
+    <li><a href="#achievements">Úspechy</a></li>
     <li><a href="#gallery">Galéria</a></li>
     <li><a href="#contact">Kontakt</a></li>
   </ul>
@@ -401,6 +431,44 @@
         </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ ACHIEVEMENTS ══════════════════════ -->
+<section id="achievements" class="section">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow"><span class="ey-txt">Úspechy</span></div>
+      <h2 class="s-head">Naše <em>ocenenia.</em></h2>
+      <p class="ach-section-desc">S hrdosťou sa môžeme pochváliť výsledkami z celoslovenských súťaží a medzinárodných turné.</p>
+    </div>
+
+    <div class="ach-grid">
+      <div class="ach-card reveal d1">
+        <div class="ach-icon">🏆</div>
+        <div class="ach-title">Víťazi kategórie</div>
+        <div class="ach-desc">Na celoslovenských súťažiach sme opakovane zvíťazili vo svojej kategórii a získali sme uznanie poroty za našu hudobnú interpretáciu.</div>
+        <div class="ach-tag">1. miesto</div>
+      </div>
+      <div class="ach-card reveal d2">
+        <div class="ach-icon">🥇</div>
+        <div class="ach-title">Zlaté pásmo</div>
+        <div class="ach-desc">Pravidelne dosahujeme najvyššie hodnotenie „zlaté pásmo" v súťažiach big bandov, čo je dôkazom našej kvality a tvrdej práce.</div>
+        <div class="ach-tag">Najvyššie hodnotenie</div>
+      </div>
+      <div class="ach-card reveal d1">
+        <div class="ach-icon">🇮🇹</div>
+        <div class="ach-title">Turné Bologna 2025</div>
+        <div class="ach-desc">V lete 2025 sme absolvovali turné v talianskej Bologni, kde sme reprezentovali Slovensko a priniesli sme swing a jazz na medzinárodné pódium.</div>
+        <div class="ach-tag">Taliansko 2025</div>
+      </div>
+      <div class="ach-card reveal d2">
+        <div class="ach-icon">🎵</div>
+        <div class="ach-title">Pravidelné úspechy</div>
+        <div class="ach-desc">Okrem víťazstiev a zlatých pásiem sme získali aj viacero čestných uznaní a špeciálnych cien za najlepšiu interpretáciu jazzových skladieb.</div>
+        <div class="ach-tag">Čestné uznania</div>
+      </div>
     </div>
   </div>
 </section>

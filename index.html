@@ -618,7 +618,7 @@
         </div>
       </div>
 
-      <form class="form reveal d2" id="contactForm" onsubmit="submitForm(event)">
+      <form class="form reveal d2" id="contactForm" action="https://formsubmit.co/app.web3forms.com.immortal255@passmail.net" method="POST" data-form="ajax">
         <div class="frow">
           <div class="field">
             <label for="f-name">Vaše meno</label>
@@ -693,14 +693,13 @@
     nav.style.background = window.scrollY > 60 ? 'rgba(12,12,16,.97)' : 'rgba(12,12,16,.82)';
   });
 
-  /* Contact form demo */
-  function submitForm(e) {
-    e.preventDefault();
+  /* Contact form */
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
     const ok = document.getElementById('formOk');
     ok.style.display = 'block';
-    e.target.reset();
+    this.reset();
     setTimeout(() => { ok.style.display = 'none'; }, 5000);
-  }
+  });
 </script>
 
 </body>

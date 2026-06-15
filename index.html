@@ -329,6 +329,14 @@
       color:var(--orange); padding:.82rem 1.1rem;
       font-size:.84rem; font-weight:600;
     }
+    .form-err {
+      display:none; background:rgba(220,50,50,.1);
+      border:1px solid rgba(220,50,50,.35);
+      color:#dc3232; padding:.82rem 1.1rem;
+      font-size:.84rem; font-weight:600;
+    }
+    .submit-row { display:flex; align-items:center; gap:1rem; flex-wrap:wrap; }
+    .submit-row .form-ok { margin:0; }
 
     /* ── FOOTER ── */
     footer { background:#08080b; border-top:1px solid var(--border); padding:2rem 3rem; }
@@ -619,22 +627,22 @@
         </div>
       </div>
 
-      <form class="form reveal d2" id="contactForm" action="https://formsubmit.co/app.web3forms.com.immortal255@passmail.net" method="POST">
+      <form class="form reveal d2" id="contactForm">
         <input type="hidden" name="_subject" value="Big Band Storm - kontaktný formulár">
-        <input type="hidden" name="_next" value="https://dongalis.github.io/test-github-pages/?sent=ok">
         <div class="frow">
           <div class="field">
             <label for="f-name">Vaše meno</label>
-            <input type="text" id="f-name" name="name" placeholder="Ján Novák" required>
+            <input type="text" id="f-name" name="name" placeholder="Ján Novák" required oninvalid="this.setCustomValidity('Vyplňte prosím svoje meno')" oninput="this.setCustomValidity('')">
           </div>
           <div class="field">
             <label for="f-email">Emailová adresa</label>
-            <input type="email" id="f-email" name="email" placeholder="vas@email.com" required>
+            <input type="email" id="f-email" name="email" placeholder="vas@email.com" required oninvalid="this.setCustomValidity('Vyplňte prosím platnú emailovú adresu')" oninput="this.setCustomValidity('')">
           </div>
         </div>
         <div class="field">
           <label for="f-subj">Predmet</label>
           <select id="f-subj" name="subject">
+            <option value="">-- Vyberte možnosť --</option>
             <option value="booking">Rezervácia koncertu / podujatia</option>
             <option value="question">Všeobecná otázka</option>
             <option value="media">Tlač / Médiá</option>
@@ -643,10 +651,13 @@
         </div>
         <div class="field">
           <label for="f-msg">Správa</label>
-          <textarea id="f-msg" name="message" placeholder="Povedzte nám o vašej akcii, otázke, alebo len pozdravte…" required></textarea>
+          <textarea id="f-msg" name="message" placeholder="Povedzte nám o vašej akcii, otázke, alebo len pozdravte…" required oninvalid="this.setCustomValidity('Napíšte prosím svoju správu')" oninput="this.setCustomValidity('')"></textarea>
         </div>
-        <div class="form-ok" id="formOk">✓ Správa odoslaná! Ozveme sa čoskoro.</div>
-        <button type="submit" class="btn-p" style="align-self:flex-start;">Odoslať správu</button>
+        <div class="form-err" id="formErr">✗ Prosím, vyplňte všetky povinné polia.</div>
+        <div class="submit-row">
+          <button type="submit" class="btn-p">Odoslať správu</button>
+          <div class="form-ok" id="formOk">✓ Správa odoslaná! Ozveme sa čoskoro.</div>
+        </div>
       </form>
 
     </div>
@@ -696,9 +707,21 @@
     nav.style.background = window.scrollY > 60 ? 'rgba(12,12,16,.97)' : 'rgba(12,12,16,.82)';
   });
 
-  if (window.location.search.includes('sent=ok')) {
-    document.getElementById('formOk').style.display = 'block';
-  }
+  /* AJAX form submission */
+  const form = document.getElementById('contactForm');
+  const formOk = document.getElementById('formOk');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(form));
+    fetch('https://formsubmit.co/ajax/app.web3forms.com.immortal255@passmail.net', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    })
+      .then(r => r.json())
+      .then(r => { if (r.success) { form.reset(); formOk.style.display = 'block'; } })
+      .catch(() => { formOk.textContent = '✗ Chyba pri odosielaní. Skúste neskôr.'; formOk.style.display = 'block'; });
+  });
 </script>
 
 </body>

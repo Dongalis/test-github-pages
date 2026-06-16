@@ -83,6 +83,9 @@
       display:inline-flex; align-items:center; gap:.5rem;
       font-size:.7rem; font-weight:700; letter-spacing:.28em; text-transform:uppercase;
       color:var(--orange); border:1px solid var(--ob); padding:.45rem 1.5rem; margin-bottom:2rem;
+      opacity:0;
+    }
+    .fonts-ready .hero-badge {
       animation:fadeDown .7s ease both;
     }
     .hero-title {
@@ -90,6 +93,9 @@
       font-size:clamp(3.8rem,11vw,8.5rem);
       font-weight:900; line-height:.9; letter-spacing:-.02em;
       color:var(--white);
+      opacity:0;
+    }
+    .fonts-ready .hero-title {
       animation:fadeUp .9s ease .15s both;
     }
     .hero-title .band-lbl {
@@ -101,7 +107,11 @@
     }
     .hero-divider {
       display:flex; align-items:center; justify-content:center; gap:1rem;
-      margin:2.5rem auto; animation:fadeIn .8s ease .4s both;
+      margin:2.5rem auto;
+      opacity:0;
+    }
+    .fonts-ready .hero-divider {
+      animation:fadeIn .8s ease .4s both;
     }
     .hd-line { height:1px; width:55px; }
     .hd-left  { background:linear-gradient(90deg,transparent,var(--gold)); }
@@ -110,10 +120,16 @@
     .hero-sub {
       font-size:.9rem; font-weight:300; letter-spacing:.15em; color:var(--muted);
       text-transform:uppercase; margin-bottom:3rem;
+      opacity:0;
+    }
+    .fonts-ready .hero-sub {
       animation:fadeUp .9s ease .3s both;
     }
     .hero-btns {
       display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;
+      opacity:0;
+    }
+    .fonts-ready .hero-btns {
       animation:fadeUp .9s ease .5s both;
     }
     .btn-p {
@@ -135,6 +151,9 @@
       position:absolute; bottom:2.5rem; left:50%; transform:translateX(-50%);
       display:none; flex-direction:column; align-items:center; gap:.5rem;
       color:var(--muted); font-size:.62rem; letter-spacing:.22em; text-transform:uppercase;
+      opacity:0;
+    }
+    .fonts-ready .scroll-hint {
       animation:fadeIn 1.5s ease 1.2s both;
     }
     .sbar {
@@ -702,6 +721,9 @@
       animation-delay:${Math.random()*9}s;`;
     nl.appendChild(n);
   }
+
+  /* Fonts ready — gate hero animations */
+  document.fonts.ready.then(() => document.documentElement.classList.add('fonts-ready'));
 
   /* Scroll reveal */
   const io = new IntersectionObserver(es => {

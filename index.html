@@ -38,6 +38,37 @@
     .nav-name { font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; color:var(--white); }
     .nav-name span { color:var(--orange); font-style:italic; }
     .nav-links { display:flex; gap:2.5rem; list-style:none; }
+
+    /* ── HAMBURGER ── */
+    .hamburger {
+      display:none; flex-direction:column; gap:5px;
+      background:none; border:none; cursor:pointer; z-index:1000;
+      padding:4px;
+    }
+    .hamburger span {
+      display:block; width:24px; height:2px;
+      background:var(--white); border-radius:1px;
+      transition:transform .3s, opacity .3s;
+    }
+    .menu-open .hamburger span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+    .menu-open .hamburger span:nth-child(2) { opacity:0; }
+    .menu-open .hamburger span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+    /* ── MOBILE MENU ── */
+    .mobile-menu {
+      position:fixed; inset:0; z-index:997;
+      background:rgba(12,12,16,0.98);
+      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2.5rem;
+      opacity:0; pointer-events:none;
+      transition:opacity .35s ease;
+    }
+    .menu-open .mobile-menu { opacity:1; pointer-events:auto; }
+    .mobile-menu a {
+      color:var(--muted); text-decoration:none;
+      font-size:1.05rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase;
+      transition:color .2s;
+    }
+    .mobile-menu a:hover { color:var(--white); }
     .nav-links a {
       color:var(--muted); text-decoration:none;
       font-size:.76rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase;
@@ -396,9 +427,10 @@
       .gi:nth-child(1) { grid-column:span 12; }
       .gi:nth-child(2),.gi:nth-child(3) { grid-column:span 6; }
       .gi:nth-child(4),.gi:nth-child(5),.gi:nth-child(6) { grid-column:span 4; }
+      .hamburger { display:flex; }
+      .nav-links { display:none; }
     }
     @media(max-width:560px) {
-      .nav-links { display:none; }
       .section { padding:5rem 1.25rem; }
       #hero { max-height:none; }
       .scroll-hint { display:flex; }
@@ -441,7 +473,18 @@
     <li><a href="#gallery">Galéria</a></li>
     <li><a href="#contact">Kontakt</a></li>
   </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">O nás</a>
+  <a href="#achievements">Úspechy</a>
+  <a href="#events">Udalosti</a>
+  <a href="#gallery">Galéria</a>
+  <a href="#contact">Kontakt</a>
+</div>
 
 <!-- ══════════════════════ HERO ══════════════════════ -->
 <section id="hero">
@@ -756,6 +799,18 @@
   const nav = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  /* Hamburger menu toggle */
+  var hamburger = document.getElementById('hamburger');
+  var mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', function () {
+    document.documentElement.classList.toggle('menu-open');
+  });
+  mobileMenu.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      document.documentElement.classList.remove('menu-open');
+    });
   });
 
   /* AJAX form submission */

@@ -55,10 +55,19 @@
       width:100%; max-height:83vh; position:relative;
       display:flex; align-items:center; justify-content:center;
       overflow:hidden; padding:7rem 2rem 5rem;
-      background:url('head_photo.jpg') center/cover no-repeat;
+      contain:paint; overflow-anchor:none;
+    }
+    .hero-bg-img {
+      position:absolute; inset:0; z-index:0;
+      width:100%; height:100%;
+      object-fit:cover; object-position:center;
+      pointer-events:none;
+      -webkit-transform:translateZ(0);
+      transform:translateZ(0);
+      will-change:transform;
     }
     #hero::before {
-      content:''; position:absolute; inset:0;
+      content:''; position:absolute; inset:0; z-index:1;
       background:rgba(0,0,0,.65);
       pointer-events:none;
     }
@@ -391,7 +400,7 @@
     @media(max-width:560px) {
       .nav-links { display:none; }
       .section { padding:5rem 1.25rem; }
-      #hero { max-height:none; min-height:100vh; }
+      #hero { max-height:none; }
       .scroll-hint { display:flex; }
       .hero-btns { flex-direction:column; align-items:center; }
       .frow { grid-template-columns:1fr; }
@@ -436,6 +445,8 @@
 
 <!-- ══════════════════════ HERO ══════════════════════ -->
 <section id="hero">
+  <script>(function(){var h=document.getElementById('hero');if(window.innerWidth<=560)h.style.minHeight=window.innerHeight+'px'})();</script>
+  <img class="hero-bg-img" src="head_photo.jpg" alt="">
   <div class="staff-bg" id="staffBg"></div>
   <div class="notes-layer" id="notesLayer"></div>
 
@@ -722,8 +733,18 @@
     nl.appendChild(n);
   }
 
+  /* Lock hero height to fixed px on mobile (prevents image re-scale when address bar hides) */
+  // Mobile hero height is locked inline before first paint (above).
+  // This fallback re-locks in case the inline script was skipped.
+  (function lockHeroHeight() {
+    var hero = document.getElementById('hero');
+    if (window.innerWidth <= 560 && !hero.style.minHeight) {
+      hero.style.minHeight = window.innerHeight + 'px';
+    }
+  })();
+
   /* Fonts ready — gate hero animations */
-  document.fonts.ready.then(() => document.documentElement.classList.add('fonts-ready'));
+  document.fonts.ready.then(function () { document.documentElement.classList.add('fonts-ready'); });
 
   /* Scroll reveal */
   const io = new IntersectionObserver(es => {

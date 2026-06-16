@@ -55,6 +55,12 @@
       min-height:100vh; position:relative;
       display:flex; align-items:center; justify-content:center;
       overflow:hidden; padding:7rem 2rem 5rem;
+      background:url('head_photo.jpg') center/cover no-repeat;
+    }
+    #hero::before {
+      content:''; position:absolute; inset:0;
+      background:rgba(0,0,0,.65);
+      pointer-events:none;
     }
     .staff-bg {
       position:absolute; inset:0; pointer-events:none;

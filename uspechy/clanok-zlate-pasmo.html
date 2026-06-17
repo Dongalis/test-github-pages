@@ -38,6 +38,35 @@
     .nav-back { color:var(--muted); text-decoration:none; font-size:.76rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; transition:color .2s; }
     .nav-back:hover { color:var(--orange); }
 
+    .hamburger {
+      display:none; flex-direction:column; gap:5px;
+      background:none; border:none; cursor:pointer; z-index:1000;
+      padding:4px;
+    }
+    .hamburger span {
+      display:block; width:24px; height:2px;
+      background:var(--white); border-radius:1px;
+      transition:transform .3s, opacity .3s;
+    }
+    .menu-open .hamburger span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+    .menu-open .hamburger span:nth-child(2) { opacity:0; }
+    .menu-open .hamburger span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      position:fixed; inset:0; z-index:997;
+      background:rgba(12,12,16,0.98);
+      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2.5rem;
+      opacity:0; pointer-events:none;
+      transition:opacity .35s ease;
+    }
+    .menu-open .mobile-menu { opacity:1; pointer-events:auto; }
+    .mobile-menu a {
+      color:var(--muted); text-decoration:none;
+      font-size:1.05rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase;
+      transition:color .2s;
+    }
+    .mobile-menu a:hover { color:var(--white); }
+
     .article-hero {
       padding:10rem 2rem 4rem;
       background:linear-gradient(135deg,var(--bg),var(--bg2));
@@ -88,6 +117,7 @@
       nav { padding:1rem 1.5rem; }
       .article-body { padding:2rem 1.25rem 4rem; }
       .article-hero { padding:8rem 1.25rem 3rem; }
+      .hamburger { display:flex; }
     }
   </style>
 </head>
@@ -109,7 +139,19 @@
     <span class="nav-name">Big Band <span>Storm</span></span>
   </a>
   <a href="../index.html" class="nav-back">← Späť</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="../index.html">Domov</a>
+  <a href="../index.html#about">O nás</a>
+  <a href="../index.html#achievements">Úspechy</a>
+  <a href="../index.html#events">Udalosti</a>
+  <a href="../galeria/index.html">Galéria</a>
+  <a href="../index.html#contact">Kontakt</a>
+</div>
 
 <section class="article-hero">
   <div class="eyebrow"><span class="ey-txt">Ocenenie</span></div>
@@ -142,5 +184,19 @@
   </div>
 </footer>
 
+<script>
+  var hamburger = document.getElementById('hamburger');
+  var mobileMenu = document.getElementById('mobileMenu');
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', function () {
+      document.documentElement.classList.toggle('menu-open');
+    });
+    mobileMenu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        document.documentElement.classList.remove('menu-open');
+      });
+    });
+  }
+</script>
 </body>
 </html>

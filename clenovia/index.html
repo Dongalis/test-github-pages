@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Členovia — Big Band Storm</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Raleway:wght@300;400;500;600;700&display=block" rel="stylesheet">
+  <style>
+    :root {
+      --bg:     #0c0c10;
+      --bg2:    #15151c;
+      --bg3:    #1c1c26;
+      --orange: #FF6B00;
+      --gold:   #C8A84B;
+      --white:  #FFFFFF;
+      --text:   #DDDCE8;
+      --muted:  #6A697A;
+      --border: rgba(255,255,255,0.07);
+      --ob:     rgba(255,107,0,0.22);
+
+      --c-vedenie:  #C8A84B;
+      --c-trubky:   #FF6B00;
+      --c-trombony: #ef5350;
+      --c-saxofony: #42a5f5;
+      --c-rytmus:   #ab47bc;
+      --c-spevaci:  #ec407a;
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family:'Raleway',sans-serif; background:var(--bg); color:var(--text); overflow-x:hidden; }
+
+    nav {
+      position:fixed; top:0; left:0; right:0; z-index:999;
+      padding:1rem 3rem;
+      display:flex; align-items:center; justify-content:space-between;
+      background:rgba(12,12,16,0.97);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid var(--border);
+    }
+    .nav-logo { display:flex; align-items:center; gap:.65rem; text-decoration:none; }
+    .nav-name { font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; color:var(--white); }
+    .nav-name span { color:var(--orange); font-style:italic; }
+    .nav-links { display:flex; gap:2.5rem; list-style:none; }
+    .nav-links a {
+      color:var(--muted); text-decoration:none;
+      font-size:.76rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase;
+      position:relative; transition:color .2s;
+    }
+    .nav-links a::after {
+      content:''; position:absolute; bottom:-4px; left:0;
+      width:0; height:1px; background:var(--orange); transition:width .3s;
+    }
+    .nav-links a:hover { color:var(--white); }
+    .nav-links a:hover::after { width:100%; }
+
+    .hamburger {
+      display:none; flex-direction:column; gap:5px;
+      background:none; border:none; cursor:pointer; z-index:1000;
+      padding:4px;
+    }
+    .hamburger span {
+      display:block; width:24px; height:2px;
+      background:var(--white); border-radius:1px;
+      transition:transform .3s, opacity .3s;
+    }
+    .menu-open .hamburger span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+    .menu-open .hamburger span:nth-child(2) { opacity:0; }
+    .menu-open .hamburger span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      position:fixed; inset:0; z-index:997;
+      background:rgba(12,12,16,0.98);
+      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2.5rem;
+      opacity:0; pointer-events:none;
+      transition:opacity .35s ease;
+    }
+    .menu-open .mobile-menu { opacity:1; pointer-events:auto; }
+    .mobile-menu a {
+      color:var(--muted); text-decoration:none;
+      font-size:1.05rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase;
+      transition:color .2s;
+    }
+    .mobile-menu a:hover { color:var(--white); }
+
+    .page-hero {
+      padding:10rem 2rem 4rem;
+      background:linear-gradient(135deg,var(--bg),var(--bg2));
+      border-bottom:1px solid var(--border);
+      text-align:center;
+    }
+    .page-hero .eyebrow { display:flex; align-items:center; gap:.8rem; margin-bottom:.7rem; justify-content:center; }
+    .page-hero .eyebrow::before { content:''; width:26px; height:1px; background:var(--orange); flex-shrink:0; }
+    .page-hero .ey-txt { font-size:.67rem; font-weight:700; letter-spacing:.32em; text-transform:uppercase; color:var(--orange); }
+    .page-hero h1 { font-family:'Playfair Display',serif; font-size:clamp(2.4rem,5vw,3.8rem); font-weight:800; line-height:1.05; color:var(--white); margin-top:.5rem; }
+    .page-hero h1 em { color:var(--orange); font-style:italic; }
+    .page-hero .hero-sub { font-size:.85rem; color:var(--muted); font-weight:300; margin-top:1rem; max-width:500px; margin-left:auto; margin-right:auto; }
+
+    .members-wrap { max-width:1140px; margin:0 auto; padding:4rem 2rem 6rem; }
+
+    /* ── Legend ── */
+    .legend {
+      display:flex; flex-wrap:wrap; justify-content:center; gap:.6rem 1.2rem;
+      margin-bottom:3rem;
+    }
+    .legend-item {
+      display:flex; align-items:center; gap:.5rem;
+      font-size:.7rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase;
+      color:var(--muted); cursor:pointer;
+      transition:color .2s, opacity .2s;
+    }
+    .legend-item:hover { color:var(--text); }
+    .legend-item.active { color:var(--white); }
+    .legend-swatch {
+      width:12px; height:12px; border-radius:2px; flex-shrink:0;
+      transition:transform .2s;
+    }
+    .legend-item.active .legend-swatch { transform:scale(1.3); }
+
+    /* ── Leaders ── */
+    .leaders-row {
+      display:flex; justify-content:center; gap:2rem;
+      margin-bottom:4rem; flex-wrap:wrap;
+    }
+    .leaders-row .member-card { width:260px; }
+
+    /* ── Card ── */
+    .member-grid {
+      display:flex; flex-wrap:wrap; justify-content:center; gap:1.5rem;
+    }
+    .member-card { flex:0 0 180px; }
+    .member-card {
+      background:var(--bg2); border:1px solid var(--border);
+      text-align:center; padding-bottom:1.2rem;
+      position:relative; overflow:hidden;
+      transition:border-color .3s, transform .3s;
+    }
+    .member-card:hover { transform:translateY(-4px); }
+    .member-card[data-section="vedenie"]  { border-top:3px solid var(--c-vedenie); }
+    .member-card[data-section="vedenie"]:hover  { border-color:var(--c-vedenie); }
+    .member-card[data-section="trubky"]   { border-top:3px solid var(--c-trubky); }
+    .member-card[data-section="trubky"]:hover   { border-color:var(--c-trubky); }
+    .member-card[data-section="trombony"] { border-top:3px solid var(--c-trombony); }
+    .member-card[data-section="trombony"]:hover { border-color:var(--c-trombony); }
+    .member-card[data-section="saxofony"] { border-top:3px solid var(--c-saxofony); }
+    .member-card[data-section="saxofony"]:hover { border-color:var(--c-saxofony); }
+    .member-card[data-section="rytmus"]   { border-top:3px solid var(--c-rytmus); }
+    .member-card[data-section="rytmus"]:hover   { border-color:var(--c-rytmus); }
+
+    .member-photo {
+      width:100%; aspect-ratio:1/1; position:relative;
+      display:flex; align-items:center; justify-content:center;
+      overflow:hidden;
+    }
+    .member-photo img { width:100%; height:100%; object-fit:cover; }
+    .member-photo .ph {
+      width:100%; height:100%; display:flex; align-items:center; justify-content:center;
+      font-family:'Playfair Display',serif; font-size:2rem; font-weight:700; color:rgba(255,255,255,.15);
+    }
+
+    /* ── Singer badge ── */
+    .singer-badge {
+      position:absolute; top:6px; right:6px;
+      background:var(--c-spevaci); color:#fff;
+      font-size:.6rem; font-weight:700; letter-spacing:.06em;
+      padding:2px 8px; border-radius:10px;
+      line-height:1.4;
+    }
+
+    .member-name {
+      font-family:'Playfair Display',serif; font-size:.95rem; font-weight:700;
+      color:var(--white); margin-top:.65rem; padding:0 .6rem;
+    }
+    .member-role {
+      font-size:.7rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase;
+      color:var(--muted); margin-top:.3rem; padding:0 .6rem .2rem;
+    }
+
+    .back-link {
+      display:inline-flex; align-items:center; gap:.5rem;
+      color:var(--orange); text-decoration:none; font-size:.8rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+      margin-top:1rem; transition:opacity .2s;
+    }
+    .back-link:hover { opacity:.7; }
+
+    footer {
+      background:#08080b; border-top:1px solid var(--border); padding:2rem 3rem;
+    }
+    .footer-inner {
+      max-width:1140px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;
+    }
+    .f-brand { font-family:'Playfair Display',serif; font-size:1rem; color:var(--white); }
+    .f-brand span { color:var(--orange); font-style:italic; }
+    .f-copy { font-size:.73rem; color:var(--muted); }
+
+    @media(max-width:780px) {
+      .hamburger { display:flex; }
+      .nav-links { display:none; }
+    }
+    @media(max-width:560px) {
+      nav { padding:1rem 1.5rem; }
+      .members-wrap { padding:2rem 1.25rem 4rem; }
+      .page-hero { padding:8rem 1.25rem 3rem; }
+      .member-grid { gap:1rem; }
+      .member-card { flex:0 0 140px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">
+    <svg width="40" height="40" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="46" height="46" rx="5" fill="#32323c"/>
+      <line x1="3" y1="22" x2="43" y2="22" stroke="white" stroke-opacity="0.22" stroke-width="0.9"/>
+      <line x1="3" y1="27" x2="43" y2="27" stroke="white" stroke-opacity="0.22" stroke-width="0.9"/>
+      <line x1="3" y1="32" x2="43" y2="32" stroke="white" stroke-opacity="0.22" stroke-width="0.9"/>
+      <line x1="3" y1="37" x2="43" y2="37" stroke="white" stroke-opacity="0.22" stroke-width="0.9"/>
+      <line x1="3" y1="42" x2="43" y2="42" stroke="white" stroke-opacity="0.22" stroke-width="0.9"/>
+      <text x="3" y="40" font-family="Georgia,'Times New Roman',serif" font-size="28" font-style="italic" font-weight="bold" fill="white">B</text>
+      <circle cx="34" cy="28" r="11" fill="#FF6B00"/>
+      <text x="27" y="37" font-family="Georgia,'Times New Roman',serif" font-size="19" font-style="italic" font-weight="bold" fill="#32323c">S</text>
+    </svg>
+    <span class="nav-name">Big Band <span>Storm</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Domov</a></li>
+    <li><a href="../clenovia/index.html">Členovia</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="../index.html">Domov</a>
+  <a href="../index.html#about">O nás</a>
+  <a href="../index.html#achievements">Úspechy</a>
+  <a href="../index.html#events">Udalosti</a>
+  <a href="../clenovia/index.html">Členovia</a>
+  <a href="../galeria/index.html">Galéria</a>
+  <a href="../index.html#contact">Kontakt</a>
+</div>
+
+<section class="page-hero">
+  <div class="eyebrow"><span class="ey-txt">Big Band Storm</span></div>
+  <h1>Naši <em>členovia</em></h1>
+  <p class="hero-sub">Pozrite sa, kto tvorí náš orchester — mladí hudobníci s vášňou pre swing a jazz.</p>
+</section>
+
+<div class="members-wrap">
+
+  <!-- Legend -->
+  <div class="legend">
+    <span class="legend-item" data-filter="all"><span class="legend-swatch" style="background:var(--white)"></span>Všetci</span>
+    <span class="legend-item" data-filter="trubky"><span class="legend-swatch" style="background:var(--c-trubky)"></span>Trúbky</span>
+    <span class="legend-item" data-filter="trombony"><span class="legend-swatch" style="background:var(--c-trombony)"></span>Trombóny</span>
+    <span class="legend-item" data-filter="saxofony"><span class="legend-swatch" style="background:var(--c-saxofony)"></span>Saxofóny</span>
+    <span class="legend-item" data-filter="rytmus"><span class="legend-swatch" style="background:var(--c-rytmus)"></span>Rytmická sekcia</span>
+    <span class="legend-item" data-filter="spev"><span class="legend-swatch" style="background:var(--c-spevaci)"></span>Speváci</span>
+  </div>
+
+  <!-- Leaders -->
+  <div class="leaders-row">
+    <div class="member-card" data-section="vedenie">
+      <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#23130e,#402818)">JG</div></div>
+      <div class="member-name">Ján Gašpárek</div>
+      <div class="member-role">Dirigent &amp; vedúci kapely</div>
+    </div>
+    <div class="member-card" data-section="vedenie">
+      <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#231a0e,#403818)">NT</div></div>
+      <div class="member-name">Nikol Tománková</div>
+      <div class="member-role">Basklarinet &amp; vedenie spevu</div>
+    </div>
+  </div>
+
+  <!-- All members grid -->
+  <div class="member-grid">
+
+    <!-- Trúbky -->
+    <div class="member-card" data-section="trubky">
+      <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#231310,#402018)">AS</div></div>
+      <div class="member-name">Adam Stupavský</div>
+      <div class="member-role">Trúbka</div>
+    </div>
+    <div class="member-card" data-singer data-section="trubky">
+      <div class="member-photo">
+        <div class="ph" style="background:linear-gradient(135deg,#132310,#184018)">AG</div>
+        <span class="singer-badge">Spev</span>
+      </div>
+      <div class="member-name">Alex Gašpárek</div>
+      <div class="member-role">Trúbka</div>
+    </div>
+    <div class="member-card" data-section="trubky">
+      <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#1a1a1a,#333)">JČ</div></div>
+      <div class="member-name">Juraj Čech</div>
+      <div class="member-role">Trúbka</div>
+    </div>
+    <div class="member-card" data-section="trubky">
+      <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#1a1a1a,#333)">JS</div></div>
+      <div class="member-name">Jakub Studenič</div>
+      <div class="member-role">Trúbka</div>
+    </div>
+    <div class="member-card" data-section="trubky">
+      <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#1a1a1a,#333)">LT</div></div>
+      <div class="member-name">Lucia Tománková</div>
+      <div class="member-role">Trúbka</div>
+    </div>
+    <div class="member-card" data-section="trubky">
+      <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#1a1a1a,#333)">LB</div></div>
+      <div class="member-name">Leo Brichta</div>
+      <div class="member-role">Soprán saxofón</div>
+    </div>
+
+    <!-- Trombóny -->
+    <div class="member-card" data-section="trombony">
+      <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#0e2318,#184030)">CV</div></div>
+      <div class="member-name">Cristino Viveiros</div>
+      <div class="member-role">Trombón</div>
+    </div>
+    <div class="member-card" data-section="trombony">
+      <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#1a0e0e,#401818)">LR</div></div>
+      <div class="member-name">Laura Ruchovanská</div>
+      <div class="member-role">Klarinet</div>
+    </div>
+    <div class="member-card" data-singer data-section="trombony">
+      <div class="member-photo">
+        <div class="ph" style="background:linear-gradient(135deg,#0e1a18,#184038)">KR</div>
+        <span class="singer-badge">Spev</span>
+      </div>
+      <div class="member-name">Klára Ruchovanská</div>
+      <div class="member-role">Klarinet</div>
+    </div>
+    <div class="member-card" data-singer data-section="trombony">
+      <div class="member-photo">
+        <div class="ph" style="background:linear-gradient(135deg,#230e1a,#401830)">DC</div>
+        <span class="singer-badge">Spev</span>
+      </div>
+      <div class="member-name">Diana Cvečková</div>
+      <div class="member-role">Melafón</div>
+    </div>
+    <div class="member-card" data-section="trombony">
+      <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#1a1a1a,#333)">OF</div></div>
+      <div class="member-name">Ondrej Fila</div>
+      <div class="member-role">Klarinet</div>
+    </div>
+    <div class="member-card" data-section="trombony">
+      <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#1a1a1a,#333)">PP</div></div>
+      <div class="member-name">Peter Pavelka</div>
+      <div class="member-role">Klarinet</div>
+    </div>
+
+    <!-- Saxofóny -->
+    <div class="member-card" data-section="saxofony">
+      <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#0e1a23,#184060)">KR</div></div>
+      <div class="member-name">Karin Rišková</div>
+      <div class="member-role">Alt saxofón</div>
+    </div>
+    <div class="member-card" data-section="saxofony">
+      <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#23130e,#402018)">JB</div></div>
+      <div class="member-name">Juraj Bobek</div>
+      <div class="member-role">Barytón saxofón</div>
+    </div>
+    <div class="member-card" data-section="saxofony">
+      <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#1a1a0e,#404018)">DN</div></div>
+      <div class="member-name">Dominik Nemečkay</div>
+      <div class="member-role">Tenor saxofón</div>
+    </div>
+    <div class="member-card" data-section="saxofony">
+      <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#0e101a,#182040)">ZT</div></div>
+      <div class="member-name">Zuzana Tománková</div>
+      <div class="member-role">Alt saxofón</div>
+    </div>
+    <div class="member-card" data-singer data-section="saxofony">
+      <div class="member-photo">
+        <div class="ph" style="background:linear-gradient(135deg,#0e0e23,#181840)">KK</div>
+        <span class="singer-badge">Spev</span>
+      </div>
+      <div class="member-name">Kamila Kovaničová</div>
+      <div class="member-role">Altová zobcová flauta</div>
+    </div>
+    <div class="member-card" data-singer data-section="saxofony">
+      <div class="member-photo">
+        <div class="ph" style="background:linear-gradient(135deg,#1a0e23,#2d1840)">LW</div>
+        <span class="singer-badge">Spev</span>
+      </div>
+      <div class="member-name">Lucia Wallnérová</div>
+      <div class="member-role">Tenor saxofón</div>
+    </div>
+    <div class="member-card" data-singer data-section="saxofony">
+      <div class="member-photo">
+        <div class="ph" style="background:linear-gradient(135deg,#0e2313,#184020)">JT</div>
+        <span class="singer-badge">Spev</span>
+      </div>
+      <div class="member-name">Jana Tománková</div>
+      <div class="member-role">Tenor saxofón</div>
+    </div>
+
+    <!-- Rytmická sekcia -->
+    <div class="member-card" data-section="rytmus">
+      <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#0e2318,#184030)">SV</div></div>
+      <div class="member-name">Sára Viveiros</div>
+      <div class="member-role">Klavír</div>
+    </div>
+    <div class="member-card" data-section="rytmus">
+      <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#1a0e23,#2d1840)">AD</div></div>
+      <div class="member-name">Adam Drinka</div>
+      <div class="member-role">Gitara</div>
+    </div>
+    <div class="member-card" data-section="rytmus">
+      <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#0e1a23,#184060)">MD</div></div>
+      <div class="member-name">Marek Drinka</div>
+      <div class="member-role">Bicie</div>
+    </div>
+    <div class="member-card" data-section="rytmus">
+      <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#231e0e,#403818)">MK</div></div>
+      <div class="member-name">Michal Kubina</div>
+      <div class="member-role">Bicie</div>
+    </div>
+    <div class="member-card" data-section="rytmus">
+      <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#0e2313,#184020)">LS</div></div>
+      <div class="member-name">Laura Svrčková</div>
+      <div class="member-role">Basová gitara</div>
+    </div>
+
+  </div>
+
+  <div style="text-align:center; margin-top:3rem;">
+    <a href="../index.html" class="back-link">← Späť na hlavnú stránku</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="f-brand">Big Band <span>Storm</span></div>
+    <div class="f-copy">Mládežnícky big band · Jazz a filmová hudba</div>
+  </div>
+</footer>
+
+<script>
+  var hamburger = document.getElementById('hamburger');
+  var mobileMenu = document.getElementById('mobileMenu');
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', function () {
+      document.documentElement.classList.toggle('menu-open');
+    });
+    mobileMenu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        document.documentElement.classList.remove('menu-open');
+      });
+    });
+  }
+
+  var legendItems = document.querySelectorAll('.legend-item');
+  var memberCards = document.querySelectorAll('.member-grid .member-card');
+  if (legendItems.length && memberCards.length) {
+    document.querySelector('.legend-item[data-filter="all"]').classList.add('active');
+    legendItems.forEach(function (item) {
+      item.addEventListener('click', function () {
+        var filter = this.getAttribute('data-filter');
+        var isActive = this.classList.contains('active');
+        legendItems.forEach(function (el) { el.classList.remove('active'); });
+        if (!isActive) {
+          this.classList.add('active');
+          memberCards.forEach(function (card) {
+            var section = card.getAttribute('data-section');
+            var isSinger = card.hasAttribute('data-singer');
+            var match = filter === 'all' || (filter === 'spev' ? isSinger : section === filter);
+            card.style.display = match ? '' : 'none';
+          });
+        } else {
+          document.querySelector('.legend-item[data-filter="all"]').classList.add('active');
+          memberCards.forEach(function (card) { card.style.display = ''; });
+        }
+      });
+    });
+  }
+</script>
+
+</body>
+</html>

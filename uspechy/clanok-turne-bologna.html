@@ -79,6 +79,13 @@
     .article-hero h1 { font-family:'Playfair Display',serif; font-size:clamp(2.4rem,5vw,3.8rem); font-weight:800; line-height:1.05; color:var(--white); margin-top:.5rem; }
     .article-hero h1 em { color:var(--orange); font-style:italic; }
     .article-hero .hero-sub { font-size:.85rem; color:var(--muted); font-weight:300; margin-top:1rem; }
+    @keyframes fadeDown { from { opacity:0; transform:translateY(-14px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+    .article-hero .eyebrow, .article-hero h1, .article-hero .hero-sub { opacity:0; }
+    .fonts-ready .article-hero .eyebrow { animation:fadeDown .7s ease both; }
+    .fonts-ready .article-hero h1 { animation:fadeUp .9s ease .15s both; }
+    .fonts-ready .article-hero .hero-sub { animation:fadeUp .9s ease .3s both; }
 
     .article-body {
       max-width:760px; margin:0 auto; padding:4rem 2rem 6rem;
@@ -198,6 +205,7 @@
       });
     });
   }
+  document.fonts.ready.then(function(){ document.documentElement.classList.add('fonts-ready'); });
 </script>
 
 </body>

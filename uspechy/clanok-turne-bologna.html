@@ -120,6 +120,9 @@
     .f-brand span { color:var(--orange); font-style:italic; }
     .f-copy { font-size:.73rem; color:var(--muted); }
 
+    .reveal  { opacity:0; transform:translateY(26px); transition:opacity .75s ease,transform .75s ease; }
+    .reveal.on { opacity:1; transform:translateY(0); }
+
     @media(max-width:560px) {
       nav { padding:1rem 1.5rem; }
       .hamburger { display:flex; }
@@ -168,19 +171,19 @@
 </section>
 
 <div class="article-body">
-  <p>V lete 2025 sa Big Band Storm vydal na svoje doteraz najväčšie dobrodružstvo — <strong>turné do talianskej Bologne</strong>. Táto cesta bola pre nás obrovským míľnikom a príležitosťou ukázať, čo v nás je, na medzinárodnej scéne.</p>
+  <p class="reveal">V lete 2025 sa Big Band Storm vydal na svoje doteraz najväčšie dobrodružstvo — <strong>turné do talianskej Bologne</strong>. Táto cesta bola pre nás obrovským míľnikom a príležitosťou ukázať, čo v nás je, na medzinárodnej scéne.</p>
 
-  <div class="highlight-box">
+  <div class="highlight-box reveal">
     <p>🏛️ Bologna — mesto hudby, kultúry a histórie — privítalo Big Band Storm s otvorenou náručou.</p>
   </div>
 
-  <p>Počas nášho pobytu sme odohrali niekoľko koncertov na rôznych miestach v Bologni a okolí. Publikum bolo fantastické a energia na pódiu aj mimo neho bola neuveriteľná. Mali sme možnosť spoznať miestnu hudobnú scénu, vymeniť si skúsenosti s talianskymi hudobníkmi a nazbierať inšpiráciu do ďalšej tvorby.</p>
+  <p class="reveal">Počas nášho pobytu sme odohrali niekoľko koncertov na rôznych miestach v Bologni a okolí. Publikum bolo fantastické a energia na pódiu aj mimo neho bola neuveriteľná. Mali sme možnosť spoznať miestnu hudobnú scénu, vymeniť si skúsenosti s talianskymi hudobníkmi a nazbierať inšpiráciu do ďalšej tvorby.</p>
 
-  <h2>Reprezentácia Slovenska</h2>
-  <p>Byť slovenským big random na medzinárodnom pódiu je niečo výnimočné. Naše vystúpenia boli plné swingovej energie, jazzových štandardov aj moderných aranžmánov, ktoré sme pripravili špeciálne pre túto príležitosť. Talianske publikum ocenilo náš štýl a nadšenie, s akým hráme.</p>
+  <h2 class="reveal">Reprezentácia Slovenska</h2>
+  <p class="reveal">Byť slovenským big random na medzinárodnom pódiu je niečo výnimočné. Naše vystúpenia boli plné swingovej energie, jazzových štandardov aj moderných aranžmánov, ktoré sme pripravili špeciálne pre túto príležitosť. Talianske publikum ocenilo náš štýl a nadšenie, s akým hráme.</p>
 
-  <h2>Čo sme si odniesli</h2>
-  <p>Okrem skvelých zážitkov a nových priateľstiev sme si z Bologne odniesli aj cenné skúsenosti, ktoré nám pomôžu rásť ako kapela. Turné tohto rozsahu nás posunulo o krok ďalej a utvrdilo nás v tom, že hudba spája ľudí bez ohľadu na hranice.</p>
+  <h2 class="reveal">Čo sme si odniesli</h2>
+  <p class="reveal">Okrem skvelých zážitkov a nových priateľstiev sme si z Bologne odniesli aj cenné skúsenosti, ktoré nám pomôžu rásť ako kapela. Turné tohto rozsahu nás posunulo o krok ďalej a utvrdilo nás v tom, že hudba spája ľudí bez ohľadu na hranice.</p>
 
   <a href="../index.html" class="back-link">← Späť na hlavnú stránku</a>
 </div>
@@ -193,6 +196,11 @@
 </footer>
 
 <script>
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
   var hamburger = document.getElementById('hamburger');
   var mobileMenu = document.getElementById('mobileMenu');
   if (hamburger && mobileMenu) {

@@ -158,6 +158,9 @@
     .f-brand span { color:var(--orange); font-style:italic; }
     .f-copy { font-size:.73rem; color:var(--muted); }
 
+    .reveal  { opacity:0; transform:translateY(26px); transition:opacity .75s ease,transform .75s ease; }
+    .reveal.on { opacity:1; transform:translateY(0); }
+
     @media(max-width:560px) {
       nav { padding:1rem 1.5rem; }
       .nav-links { display:none; }
@@ -222,31 +225,31 @@
   <!-- History timeline -->
   <h2 class="s-head" style="margin-bottom:1.5rem">Naša <em>cesta</em></h2>
   <div class="tl" style="margin-bottom:4rem">
-    <div class="tl-item">
+    <div class="tl-item reveal">
       <div class="tl-dot"></div>
       <div class="tl-year">2019</div>
       <div class="tl-title">Založenie kapely</div>
       <div class="tl-desc">Big Band Storm vznikol z nadšenia niekoľkých mladých hudobníkov, ktorí chceli priniesť swing a jazz do svojho mesta.</div>
     </div>
-    <div class="tl-item">
+    <div class="tl-item reveal">
       <div class="tl-dot"></div>
       <div class="tl-year">2020</div>
       <div class="tl-title">Prvé vystúpenia</div>
       <div class="tl-desc">Napriek náročným začiatkom sme odohrali prvé koncerty na miestnych podujatiach a školských akciách.</div>
     </div>
-    <div class="tl-item">
+    <div class="tl-item reveal">
       <div class="tl-dot"></div>
       <div class="tl-year">2022</div>
       <div class="tl-title">Prvá súťaž a prvé zlaté pásmo</div>
       <div class="tl-desc">Prihlásili sme sa do celoslovenskej súťaže big bandov a hneď na prvý pokus sme získali zlaté pásmo.</div>
     </div>
-    <div class="tl-item">
+    <div class="tl-item reveal">
       <div class="tl-dot"></div>
       <div class="tl-year">2024</div>
       <div class="tl-title">Víťazstvo v kategórii</div>
       <div class="tl-desc">Na celoslovenskej súťaži sme vyhrali svoju kategóriu a potvrdili sme si miesto medzi najlepšími mládežníckymi big bandmi.</div>
     </div>
-    <div class="tl-item">
+    <div class="tl-item reveal">
       <div class="tl-dot"></div>
       <div class="tl-year">2025</div>
       <div class="tl-title">Turné v Taliansku</div>
@@ -257,7 +260,7 @@
   <!-- Achievements timeline -->
   <h2 class="s-head" style="margin-bottom:1.5rem">Prehľad <em>ocenení</em></h2>
   <div class="tl">
-    <div class="tl-item">
+    <div class="tl-item reveal">
       <div class="tl-dot"></div>
       <div class="tl-year">2025 — jeseň</div>
       <div class="tl-title">Obhajoba víťazstva v kategórii</div>
@@ -265,7 +268,7 @@
       <span class="tl-tag">1. miesto</span>
       <a href="clanok-vitazi-kategorie.html" class="tl-link">Čítať článok →</a>
     </div>
-    <div class="tl-item">
+    <div class="tl-item reveal">
       <div class="tl-dot"></div>
       <div class="tl-year">2025 — leto</div>
       <div class="tl-title">Turné Bologna</div>
@@ -273,7 +276,7 @@
       <span class="tl-tag">Medzinárodné turné</span>
       <a href="clanok-turne-bologna.html" class="tl-link">Čítať článok →</a>
     </div>
-    <div class="tl-item">
+    <div class="tl-item reveal">
       <div class="tl-dot"></div>
       <div class="tl-year">2024 — jeseň</div>
       <div class="tl-title">Zlaté pásmo a špeciálna cena</div>
@@ -281,28 +284,28 @@
       <span class="tl-tag">Zlaté pásmo + Špeciálna cena</span>
       <a href="clanok-zlate-pasmo.html" class="tl-link">Čítať článok →</a>
     </div>
-    <div class="tl-item">
+    <div class="tl-item reveal">
       <div class="tl-dot"></div>
       <div class="tl-year">2024 — jar</div>
       <div class="tl-title">Víťazstvo v kategórii</div>
       <div class="tl-desc">Na celoslovenskej súťaži sme vyhrali svoju kategóriu a získali sme najvyšší počet bodov.</div>
       <span class="tl-tag">1. miesto</span>
     </div>
-    <div class="tl-item">
+    <div class="tl-item reveal">
       <div class="tl-dot"></div>
       <div class="tl-year">2023</div>
       <div class="tl-title">Obhajoba zlatého pásma</div>
       <div class="tl-desc">Potvrdili sme svoju kvalitu a opäť sme si odniesli zlaté pásmo z celoslovenskej súťaže.</div>
       <span class="tl-tag">Zlaté pásmo</span>
     </div>
-    <div class="tl-item">
+    <div class="tl-item reveal">
       <div class="tl-dot"></div>
       <div class="tl-year">2022 — jeseň</div>
       <div class="tl-title">Čestné uznanie poroty</div>
       <div class="tl-desc">Porota ocenila našu originálnu interpretáciu jazzovej skladby špeciálnym čestným uznaním.</div>
       <span class="tl-tag">Čestné uznanie</span>
     </div>
-    <div class="tl-item">
+    <div class="tl-item reveal">
       <div class="tl-dot"></div>
       <div class="tl-year">2022 — jar</div>
       <div class="tl-title">Prvé zlaté pásmo</div>
@@ -322,6 +325,11 @@
 </footer>
 
 <script>
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
   var hamburger = document.getElementById('hamburger');
   var mobileMenu = document.getElementById('mobileMenu');
   if (hamburger && mobileMenu) {

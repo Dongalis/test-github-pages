@@ -201,6 +201,9 @@
     .f-brand span { color:var(--orange); font-style:italic; }
     .f-copy { font-size:.73rem; color:var(--muted); }
 
+    .reveal  { opacity:0; transform:translateY(26px); transition:opacity .75s ease,transform .75s ease; }
+    .reveal.on { opacity:1; transform:translateY(0); }
+
     @media(max-width:780px) {
       .hamburger { display:flex; }
       .nav-links { display:none; }
@@ -259,7 +262,7 @@
 <div class="members-wrap">
 
   <!-- Legend -->
-  <div class="legend">
+  <div class="legend reveal">
     <span class="legend-item" data-filter="all"><span class="legend-swatch" style="background:var(--white)"></span>Všetci</span>
     <span class="legend-item" data-filter="trubky"><span class="legend-swatch" style="background:var(--c-trubky)"></span>Trúbky</span>
     <span class="legend-item" data-filter="trombony"><span class="legend-swatch" style="background:var(--c-trombony)"></span>Trombóny</span>
@@ -270,12 +273,12 @@
 
   <!-- Leaders -->
   <div class="leaders-row">
-    <div class="member-card" data-section="vedenie">
+    <div class="member-card reveal" data-section="vedenie">
       <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#23130e,#402818)">JG</div></div>
       <div class="member-name">Ján Gašpárek</div>
       <div class="member-role">Dirigent &amp; vedúci kapely</div>
     </div>
-    <div class="member-card" data-section="vedenie">
+    <div class="member-card reveal" data-section="vedenie">
       <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#231a0e,#403818)">NT</div></div>
       <div class="member-name">Nikol Tománková</div>
       <div class="member-role">Basklarinet &amp; vedenie spevu</div>
@@ -286,12 +289,12 @@
   <div class="member-grid">
 
     <!-- Trúbky -->
-    <div class="member-card" data-section="trubky">
+    <div class="member-card reveal" data-section="trubky">
       <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#231310,#402018)">AS</div></div>
       <div class="member-name">Adam Stupavský</div>
       <div class="member-role">Trúbka</div>
     </div>
-    <div class="member-card" data-singer data-section="trubky">
+    <div class="member-card reveal" data-singer data-section="trubky">
       <div class="member-photo">
         <div class="ph" style="background:linear-gradient(135deg,#132310,#184018)">AG</div>
         <span class="singer-badge">Spev</span>
@@ -299,39 +302,39 @@
       <div class="member-name">Alex Gašpárek</div>
       <div class="member-role">Trúbka</div>
     </div>
-    <div class="member-card" data-section="trubky">
+    <div class="member-card reveal" data-section="trubky">
       <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#1a1a1a,#333)">JČ</div></div>
       <div class="member-name">Juraj Čech</div>
       <div class="member-role">Trúbka</div>
     </div>
-    <div class="member-card" data-section="trubky">
+    <div class="member-card reveal" data-section="trubky">
       <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#1a1a1a,#333)">JS</div></div>
       <div class="member-name">Jakub Studenič</div>
       <div class="member-role">Trúbka</div>
     </div>
-    <div class="member-card" data-section="trubky">
+    <div class="member-card reveal" data-section="trubky">
       <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#1a1a1a,#333)">LT</div></div>
       <div class="member-name">Lucia Tománková</div>
       <div class="member-role">Trúbka</div>
     </div>
-    <div class="member-card" data-section="trubky">
+    <div class="member-card reveal" data-section="trubky">
       <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#1a1a1a,#333)">LB</div></div>
       <div class="member-name">Leo Brichta</div>
       <div class="member-role">Soprán saxofón</div>
     </div>
 
     <!-- Trombóny -->
-    <div class="member-card" data-section="trombony">
+    <div class="member-card reveal" data-section="trombony">
       <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#0e2318,#184030)">CV</div></div>
       <div class="member-name">Cristino Viveiros</div>
       <div class="member-role">Trombón</div>
     </div>
-    <div class="member-card" data-section="trombony">
+    <div class="member-card reveal" data-section="trombony">
       <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#1a0e0e,#401818)">LR</div></div>
       <div class="member-name">Laura Ruchovanská</div>
       <div class="member-role">Klarinet</div>
     </div>
-    <div class="member-card" data-singer data-section="trombony">
+    <div class="member-card reveal" data-singer data-section="trombony">
       <div class="member-photo">
         <div class="ph" style="background:linear-gradient(135deg,#0e1a18,#184038)">KR</div>
         <span class="singer-badge">Spev</span>
@@ -339,7 +342,7 @@
       <div class="member-name">Klára Ruchovanská</div>
       <div class="member-role">Klarinet</div>
     </div>
-    <div class="member-card" data-singer data-section="trombony">
+    <div class="member-card reveal" data-singer data-section="trombony">
       <div class="member-photo">
         <div class="ph" style="background:linear-gradient(135deg,#230e1a,#401830)">DC</div>
         <span class="singer-badge">Spev</span>
@@ -347,39 +350,39 @@
       <div class="member-name">Diana Cvečková</div>
       <div class="member-role">Melafón</div>
     </div>
-    <div class="member-card" data-section="trombony">
+    <div class="member-card reveal" data-section="trombony">
       <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#1a1a1a,#333)">OF</div></div>
       <div class="member-name">Ondrej Fila</div>
       <div class="member-role">Klarinet</div>
     </div>
-    <div class="member-card" data-section="trombony">
+    <div class="member-card reveal" data-section="trombony">
       <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#1a1a1a,#333)">PP</div></div>
       <div class="member-name">Peter Pavelka</div>
       <div class="member-role">Klarinet</div>
     </div>
 
     <!-- Saxofóny -->
-    <div class="member-card" data-section="saxofony">
+    <div class="member-card reveal" data-section="saxofony">
       <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#0e1a23,#184060)">KR</div></div>
       <div class="member-name">Karin Rišková</div>
       <div class="member-role">Alt saxofón</div>
     </div>
-    <div class="member-card" data-section="saxofony">
+    <div class="member-card reveal" data-section="saxofony">
       <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#23130e,#402018)">JB</div></div>
       <div class="member-name">Juraj Bobek</div>
       <div class="member-role">Barytón saxofón</div>
     </div>
-    <div class="member-card" data-section="saxofony">
+    <div class="member-card reveal" data-section="saxofony">
       <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#1a1a0e,#404018)">DN</div></div>
       <div class="member-name">Dominik Nemečkay</div>
       <div class="member-role">Tenor saxofón</div>
     </div>
-    <div class="member-card" data-section="saxofony">
+    <div class="member-card reveal" data-section="saxofony">
       <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#0e101a,#182040)">ZT</div></div>
       <div class="member-name">Zuzana Tománková</div>
       <div class="member-role">Alt saxofón</div>
     </div>
-    <div class="member-card" data-singer data-section="saxofony">
+    <div class="member-card reveal" data-singer data-section="saxofony">
       <div class="member-photo">
         <div class="ph" style="background:linear-gradient(135deg,#0e0e23,#181840)">KK</div>
         <span class="singer-badge">Spev</span>
@@ -387,7 +390,7 @@
       <div class="member-name">Kamila Kovaničová</div>
       <div class="member-role">Altová zobcová flauta</div>
     </div>
-    <div class="member-card" data-singer data-section="saxofony">
+    <div class="member-card reveal" data-singer data-section="saxofony">
       <div class="member-photo">
         <div class="ph" style="background:linear-gradient(135deg,#1a0e23,#2d1840)">LW</div>
         <span class="singer-badge">Spev</span>
@@ -395,7 +398,7 @@
       <div class="member-name">Lucia Wallnérová</div>
       <div class="member-role">Tenor saxofón</div>
     </div>
-    <div class="member-card" data-singer data-section="saxofony">
+    <div class="member-card reveal" data-singer data-section="saxofony">
       <div class="member-photo">
         <div class="ph" style="background:linear-gradient(135deg,#0e2313,#184020)">JT</div>
         <span class="singer-badge">Spev</span>
@@ -405,27 +408,27 @@
     </div>
 
     <!-- Rytmická sekcia -->
-    <div class="member-card" data-section="rytmus">
+    <div class="member-card reveal" data-section="rytmus">
       <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#0e2318,#184030)">SV</div></div>
       <div class="member-name">Sára Viveiros</div>
       <div class="member-role">Klavír</div>
     </div>
-    <div class="member-card" data-section="rytmus">
+    <div class="member-card reveal" data-section="rytmus">
       <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#1a0e23,#2d1840)">AD</div></div>
       <div class="member-name">Adam Drinka</div>
       <div class="member-role">Gitara</div>
     </div>
-    <div class="member-card" data-section="rytmus">
+    <div class="member-card reveal" data-section="rytmus">
       <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#0e1a23,#184060)">MD</div></div>
       <div class="member-name">Marek Drinka</div>
       <div class="member-role">Bicie</div>
     </div>
-    <div class="member-card" data-section="rytmus">
+    <div class="member-card reveal" data-section="rytmus">
       <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#231e0e,#403818)">MK</div></div>
       <div class="member-name">Michal Kubina</div>
       <div class="member-role">Bicie</div>
     </div>
-    <div class="member-card" data-section="rytmus">
+    <div class="member-card reveal" data-section="rytmus">
       <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#0e2313,#184020)">LS</div></div>
       <div class="member-name">Laura Svrčková</div>
       <div class="member-role">Basová gitara</div>
@@ -446,6 +449,11 @@
 </footer>
 
 <script>
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
   var hamburger = document.getElementById('hamburger');
   var mobileMenu = document.getElementById('mobileMenu');
   if (hamburger && mobileMenu) {

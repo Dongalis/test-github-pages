@@ -201,6 +201,21 @@
     .f-brand span { color:var(--orange); font-style:italic; }
     .f-copy { font-size:.73rem; color:var(--muted); }
 
+    /* ── Former members ── */
+    .former-wrap { max-width:780px; margin-left:auto; margin-right:auto; }
+    .former-head { margin-bottom:2.5rem; }
+    .former-grid {
+      display:flex; flex-wrap:wrap; gap:0 2rem;
+      padding:2rem; background:var(--bg2); border:1px solid var(--border); border-radius:4px;
+    }
+    .former-item {
+      display:flex; flex:0 0 calc(50% - 1rem); align-items:center; gap:1rem;
+      padding:.5rem 0; border-bottom:1px solid var(--border);
+    }
+    .former-item:nth-last-child(-n+2) { border-bottom:none; }
+    .fi-name { font-size:.9rem; font-weight:600; color:var(--text); }
+    .fi-role { font-size:.73rem; color:var(--muted); margin-left:auto; text-transform:uppercase; letter-spacing:.08em; font-weight:500; }
+
     .reveal  { opacity:0; transform:translateY(26px); transition:opacity .75s ease,transform .75s ease; }
     .reveal.on { opacity:1; transform:translateY(0); }
 
@@ -332,7 +347,7 @@
     <div class="member-card reveal" data-section="trombony">
       <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#1a0e0e,#401818)">LR</div></div>
       <div class="member-name">Laura Ruchovanská</div>
-      <div class="member-role">Klarinet</div>
+      <div class="member-role">B klarinet</div>
     </div>
     <div class="member-card reveal" data-singer data-section="trombony">
       <div class="member-photo">
@@ -340,7 +355,7 @@
         <span class="singer-badge">Spev</span>
       </div>
       <div class="member-name">Klára Ruchovanská</div>
-      <div class="member-role">Klarinet</div>
+      <div class="member-role">B klarinet</div>
     </div>
     <div class="member-card reveal" data-singer data-section="trombony">
       <div class="member-photo">
@@ -353,12 +368,12 @@
     <div class="member-card reveal" data-section="trombony">
       <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#1a1a1a,#333)">OF</div></div>
       <div class="member-name">Ondrej Fila</div>
-      <div class="member-role">Klarinet</div>
+      <div class="member-role">B klarinet</div>
     </div>
     <div class="member-card reveal" data-section="trombony">
       <div class="member-photo"><div class="ph" style="background:linear-gradient(135deg,#1a1a1a,#333)">PP</div></div>
       <div class="member-name">Peter Pavelka</div>
-      <div class="member-role">Klarinet</div>
+      <div class="member-role">B klarinet</div>
     </div>
 
     <!-- Saxofóny -->
@@ -434,6 +449,56 @@
       <div class="member-role">Basová gitara</div>
     </div>
 
+  </div>
+
+  <!-- Former members -->
+  <div class="former-wrap reveal" style="margin-top:5rem;">
+    <div class="former-head">
+      <div class="eyebrow" style="display:flex;align-items:center;gap:.8rem;margin-bottom:.7rem;justify-content:center;">
+        <span class="ey-txt" style="font-size:.67rem;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--orange);">Big Band Storm</span>
+      </div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;color:var(--white);text-align:center;">Bývalí <em style="color:var(--orange);font-style:italic;">členovia</em></h2>
+      <p class="hero-sub" style="font-size:.75rem;color:var(--muted);font-weight:300;margin-top:.4rem;text-align:center;">Ľudia, ktorí boli súčasťou našej cesty</p>
+    </div>
+
+    <div class="former-grid">
+      <div class="former-item"><span class="fi-name">Marián Hladík</span><span class="fi-role">Trúbka</span></div>
+      <div class="former-item"><span class="fi-name">Róbert Drinka</span><span class="fi-role">Trúbka</span></div>
+      <div class="former-item"><span class="fi-name">Róbert Drinka</span><span class="fi-role">Tenor saxofón</span></div>
+      <div class="former-item"><span class="fi-name">Pavol Tománek</span><span class="fi-role">Trúbka</span></div>
+      <div class="former-item"><span class="fi-name">Samo Černý</span><span class="fi-role">Trúbka</span></div>
+      <div class="former-item"><span class="fi-name">Tomáš Kumpan</span><span class="fi-role">Trúbka</span></div>
+      <div class="former-item"><span class="fi-name">Sabína Hajlová</span><span class="fi-role">Alt saxofón</span></div>
+      <div class="former-item"><span class="fi-name">Melanie Thereza Benková</span><span class="fi-role">Alt saxofón</span></div>
+      <div class="former-item"><span class="fi-name">Dominik Samko</span><span class="fi-role">Klavír</span></div>
+      <div class="former-item"><span class="fi-name">Dana Benková</span><span class="fi-role">Gitara</span></div>
+      <div class="former-item"><span class="fi-name">Soňa Nemečkayová</span><span class="fi-role">Gitara</span></div>
+      <div class="former-item"><span class="fi-name">Patrik Cigánek</span><span class="fi-role">Basová gitara</span></div>
+      <div class="former-item"><span class="fi-name">Erik Michálek</span><span class="fi-role">Spev</span></div>
+      <div class="former-item"><span class="fi-name">Barbora Šajdíková</span><span class="fi-role">Spev</span></div>
+      <div class="former-item"><span class="fi-name">Milan Cák</span><span class="fi-role">Tenor saxofón</span></div>
+      <div class="former-item"><span class="fi-name">Tomáš Semián</span><span class="fi-role">Basová gitara</span></div>
+      <div class="former-item"><span class="fi-name">Tibor Jankovič</span><span class="fi-role">Es klarinet</span></div>
+      <div class="former-item"><span class="fi-name">Monika Kanichová</span><span class="fi-role">B klarinet</span></div>
+      <div class="former-item"><span class="fi-name">Andrea Samková</span><span class="fi-role">B klarinet</span></div>
+      <div class="former-item"><span class="fi-name">Jakub Včelka</span><span class="fi-role">Trúbka</span></div>
+      <div class="former-item"><span class="fi-name">Tomáš Víttek</span><span class="fi-role">Trúbka</span></div>
+      <div class="former-item"><span class="fi-name">Jana Drinková</span><span class="fi-role">Alt saxofón</span></div>
+      <div class="former-item"><span class="fi-name">Kristián Janočko</span><span class="fi-role">Bicie</span></div>
+      <div class="former-item"><span class="fi-name">Ondrej Flimel</span><span class="fi-role">Bicie</span></div>
+      <div class="former-item"><span class="fi-name">Adrián Trávnik</span><span class="fi-role">Akordeón</span></div>
+      <div class="former-item"><span class="fi-name">Viktor Václavek</span><span class="fi-role">?</span></div>
+      <div class="former-item"><span class="fi-name">Filip Šebesta</span><span class="fi-role">Trombón</span></div>
+      <div class="former-item"><span class="fi-name">Gabriela Cvečková</span><span class="fi-role">B klarinet</span></div>
+      <div class="former-item"><span class="fi-name">Mária Filípková</span><span class="fi-role">?</span></div>
+      <div class="former-item"><span class="fi-name">Lukáš Člunek</span><span class="fi-role">?</span></div>
+      <div class="former-item"><span class="fi-name">Viktoria Šmídová</span><span class="fi-role">?</span></div>
+      <div class="former-item"><span class="fi-name">Elena Vilémová</span><span class="fi-role">?</span></div>
+      <div class="former-item"><span class="fi-name">Viktória Kürthyová</span><span class="fi-role">Saxofón</span></div>
+      <div class="former-item"><span class="fi-name">Lívia Valachovičová</span><span class="fi-role">Saxofón</span></div>
+      <div class="former-item"><span class="fi-name">Bianka Péčiová</span><span class="fi-role">B klarinet</span></div>
+      <div class="former-item"><span class="fi-name">Veronika Sekáčová</span><span class="fi-role">B klarinet</span></div>
+    </div>
   </div>
 
   <div style="text-align:center; margin-top:3rem;">

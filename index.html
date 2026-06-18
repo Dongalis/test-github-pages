@@ -328,6 +328,37 @@
       color:#dc3232; padding:.82rem 1.1rem;
       font-size:.84rem; font-weight:600;
     }
+    .consent-field { margin-top:.5rem; }
+    .consent-row {
+      display:flex; align-items:flex-start; gap:.65rem;
+      cursor:pointer; font-size:.82rem; font-weight:300; color:var(--muted); line-height:1.5;
+    }
+    .consent-row input[type="checkbox"] {
+      position:absolute; opacity:0; width:0; height:0; pointer-events:none;
+    }
+    .consent-row .check-box {
+      margin-top:2px; width:18px; height:18px; flex-shrink:0;
+      border:1px solid var(--border); background:var(--bg2);
+      display:flex; align-items:center; justify-content:center;
+      transition:all .2s; position:relative;
+    }
+    .consent-row .check-box::after {
+      content:''; width:5px; height:9px;
+      border:solid var(--white); border-width:0 2px 2px 0;
+      transform:rotate(45deg) scale(0); margin-top:-1px;
+      transition:transform .15s;
+    }
+    .consent-row input[type="checkbox"]:checked + .check-box {
+      border-color:var(--orange); background:var(--orange);
+    }
+    .consent-row input[type="checkbox"]:checked + .check-box::after { transform:rotate(45deg) scale(1); }
+    .consent-row input[type="checkbox"]:focus-visible + .check-box { outline:2px solid var(--orange); outline-offset:2px; }
+    .consent-text {
+      font-size:.72rem; color:rgba(255,255,255,0.25); line-height:1.5;
+      margin-top:.35rem;
+    }
+    .consent-text a { color:var(--orange); text-decoration:none; }
+    .consent-text a:hover { text-decoration:underline; }
     .submit-row { display:flex; align-items:center; gap:1rem; flex-wrap:wrap; }
     .submit-row .form-ok { margin:0; }
 
@@ -651,6 +682,14 @@
         <div class="field">
           <label for="f-msg">Správa</label>
           <textarea id="f-msg" name="message" placeholder="Povedzte nám o vašej akcii, otázke, alebo len pozdravte…" required oninvalid="this.setCustomValidity('Napíšte prosím svoju správu')" oninput="this.setCustomValidity('')"></textarea>
+        </div>
+        <div class="field consent-field">
+          <label class="consent-row">
+            <input type="checkbox" id="f-consent" name="consent" required oninvalid="this.setCustomValidity('Pre odoslanie formulára je potrebný súhlas so spracovaním údajov')" oninput="this.setCustomValidity('')">
+            <span class="check-box"></span>
+            <span class="consent-label">Súhlasím so spracovaním mojich osobných údajov (meno, email) za účelom odpovede na túto správu.</span>
+          </label>
+          <p class="consent-text">Vaše údaje sú u nás v bezpečí. Neposkytujeme ich tretím stranám a po vybavení požiadavky ich vymažeme.</p>
         </div>
         <div class="form-err" id="formErr">✗ Prosím, vyplňte všetky povinné polia.</div>
         <div class="submit-row">

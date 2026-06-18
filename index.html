@@ -7,24 +7,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Raleway:wght@300;400;500;600;700&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
   <style>
-    :root {
-      --bg:     #0c0c10;
-      --bg2:    #15151c;
-      --bg3:    #1c1c26;
-      --orange: #FF6B00;
-      --gold:   #C8A84B;
-      --white:  #FFFFFF;
-      --text:   #DDDCE8;
-      --muted:  #6A697A;
-      --border: rgba(255,255,255,0.07);
-      --ob:     rgba(255,107,0,0.22);
-    }
-    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-    html { scroll-behavior: smooth; }
-    body { font-family:'Raleway',sans-serif; background:var(--bg); color:var(--text); overflow-x:hidden; }
-
-    /* ── NAV ── */
+    /* ── NAV (transparent, gets opaque on scroll) ── */
     nav {
       position:fixed; top:0; left:0; right:0; z-index:999;
       padding:1rem 3rem;
@@ -34,52 +19,7 @@
       transition:background .3s, border-color .3s;
     }
     #navbar.scrolled { background:rgba(12,12,16,0.97); border-bottom-color:var(--border); }
-    .nav-logo { display:flex; align-items:center; gap:.65rem; text-decoration:none; }
-    .nav-name { font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; color:var(--white); }
-    .nav-name span { color:var(--orange); font-style:italic; }
-    .nav-links { display:flex; gap:2.5rem; list-style:none; }
 
-    /* ── HAMBURGER ── */
-    .hamburger {
-      display:none; flex-direction:column; gap:5px;
-      background:none; border:none; cursor:pointer; z-index:1000;
-      padding:4px;
-    }
-    .hamburger span {
-      display:block; width:24px; height:2px;
-      background:var(--white); border-radius:1px;
-      transition:transform .3s, opacity .3s;
-    }
-    .menu-open .hamburger span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
-    .menu-open .hamburger span:nth-child(2) { opacity:0; }
-    .menu-open .hamburger span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
-
-    /* ── MOBILE MENU ── */
-    .mobile-menu {
-      position:fixed; inset:0; z-index:997;
-      background:rgba(12,12,16,0.98);
-      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2.5rem;
-      opacity:0; pointer-events:none;
-      transition:opacity .35s ease;
-    }
-    .menu-open .mobile-menu { opacity:1; pointer-events:auto; }
-    .mobile-menu a {
-      color:rgba(255,255,255,0.65); text-decoration:none;
-      font-size:1.05rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase;
-      transition:color .2s;
-    }
-    .mobile-menu a:hover { color:var(--white); }
-    .nav-links a {
-      color:rgba(255,255,255,0.65); text-decoration:none;
-      font-size:.76rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase;
-      position:relative; transition:color .2s;
-    }
-    .nav-links a::after {
-      content:''; position:absolute; bottom:-4px; left:0;
-      width:0; height:1px; background:var(--orange); transition:width .3s;
-    }
-    .nav-links a:hover { color:var(--white); }
-    .nav-links a:hover::after { width:100%; }
 
     /* ── HERO ── */
     #hero {
@@ -202,18 +142,6 @@
       animation:sBlink 2.2s ease-in-out infinite;
     }
     @keyframes sBlink { 0%,100%{opacity:.9} 50%{opacity:.15} }
-
-    /* ── SHARED ── */
-    .section { padding:7rem 2rem; }
-    .wrap    { max-width:1140px; margin:0 auto; }
-    .eyebrow { display:flex; align-items:center; gap:.8rem; margin-bottom:.7rem; }
-    .eyebrow::before { content:''; width:26px; height:1px; background:var(--orange); flex-shrink:0; }
-    .ey-txt  { font-size:.67rem; font-weight:700; letter-spacing:.32em; text-transform:uppercase; color:var(--orange); }
-    .s-head  { font-family:'Playfair Display',serif; font-size:clamp(2.4rem,5vw,3.8rem); font-weight:800; line-height:1.05; color:var(--white); }
-    .s-head em { color:var(--orange); font-style:italic; }
-    .reveal  { opacity:0; transform:translateY(26px); transition:opacity .75s ease,transform .75s ease; }
-    .reveal.on { opacity:1; transform:translateY(0); }
-    .d1 { transition-delay:.12s; } .d2 { transition-delay:.24s; } .d3 { transition-delay:.36s; }
 
     /* ── ABOUT ── */
     #about { background:var(--bg); }
@@ -404,18 +332,8 @@
     .submit-row .form-ok { margin:0; }
 
     /* ── FOOTER ── */
-    footer { background:#08080b; border-top:1px solid var(--border); padding:2rem 3rem; }
-    .footer-inner { max-width:1140px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
-    .f-brand { font-family:'Playfair Display',serif; font-size:1rem; color:var(--white); }
-    .f-brand span { color:var(--orange); font-style:italic; }
     .f-staff { display:flex; flex-direction:column; gap:5px; align-items:center; }
     .f-sl { width:48px; height:.5px; background:rgba(255,107,0,.18); }
-    .f-copy { font-size:.73rem; color:var(--muted); }
-
-    /* ── KEYFRAMES ── */
-    @keyframes fadeDown { from{opacity:0;transform:translateY(-14px)} to{opacity:1;transform:translateY(0)} }
-    @keyframes fadeUp   { from{opacity:0;transform:translateY(24px)}  to{opacity:1;transform:translateY(0)} }
-    @keyframes fadeIn   { from{opacity:0} to{opacity:1} }
 
     /* ── RESPONSIVE ── */
     @media(max-width:1020px) {
@@ -427,8 +345,6 @@
       .gi:nth-child(1) { grid-column:span 12; }
       .gi:nth-child(2),.gi:nth-child(3) { grid-column:span 6; }
       .gi:nth-child(4),.gi:nth-child(5),.gi:nth-child(6) { grid-column:span 4; }
-      .hamburger { display:flex; }
-      .nav-links { display:none; }
     }
     @media(max-width:560px) {
       .section { padding:5rem 1.25rem; }

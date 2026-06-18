@@ -7,95 +7,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Raleway:wght@300;400;500;600;700&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
   <style>
-    :root {
-      --bg:     #0c0c10;
-      --bg2:    #15151c;
-      --orange: #FF6B00;
-      --gold:   #C8A84B;
-      --white:  #FFFFFF;
-      --text:   #DDDCE8;
-      --muted:  #6A697A;
-      --border: rgba(255,255,255,0.07);
-      --ob:     rgba(255,107,0,0.22);
-    }
-    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-    html { scroll-behavior: smooth; }
-    body { font-family:'Raleway',sans-serif; background:var(--bg); color:var(--text); overflow-x:hidden; }
-
-    nav {
-      position:fixed; top:0; left:0; right:0; z-index:999;
-      padding:1rem 3rem;
-      display:flex; align-items:center; justify-content:space-between;
-      background:rgba(12,12,16,0.97);
-      backdrop-filter:blur(18px);
-      border-bottom:1px solid var(--border);
-    }
-    .nav-logo { display:flex; align-items:center; gap:.65rem; text-decoration:none; }
-    .nav-name { font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; color:var(--white); }
-    .nav-name span { color:var(--orange); font-style:italic; }
-    .nav-links { display:flex; gap:2.5rem; list-style:none; }
-    .nav-links a {
-      color:rgba(255,255,255,0.65); text-decoration:none;
-      font-size:.76rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase;
-      position:relative; transition:color .2s;
-    }
-    .nav-links a::after {
-      content:''; position:absolute; bottom:-4px; left:0;
-      width:0; height:1px; background:var(--orange); transition:width .3s;
-    }
-    .nav-links a:hover { color:var(--white); }
-    .nav-links a:hover::after { width:100%; }
-
-    .hamburger {
-      display:none; flex-direction:column; gap:5px;
-      background:none; border:none; cursor:pointer; z-index:1000;
-      padding:4px;
-    }
-    .hamburger span {
-      display:block; width:24px; height:2px;
-      background:var(--white); border-radius:1px;
-      transition:transform .3s, opacity .3s;
-    }
-    .menu-open .hamburger span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
-    .menu-open .hamburger span:nth-child(2) { opacity:0; }
-    .menu-open .hamburger span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
-
-    .mobile-menu {
-      position:fixed; inset:0; z-index:997;
-      background:rgba(12,12,16,0.98);
-      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2.5rem;
-      opacity:0; pointer-events:none;
-      transition:opacity .35s ease;
-    }
-    .menu-open .mobile-menu { opacity:1; pointer-events:auto; }
-    .mobile-menu a {
-      color:rgba(255,255,255,0.65); text-decoration:none;
-      font-size:1.05rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase;
-      transition:color .2s;
-    }
-    .mobile-menu a:hover { color:var(--white); }
-
-    .page-hero {
-      padding:10rem 2rem 4rem;
-      background:linear-gradient(135deg,var(--bg),var(--bg2));
-      border-bottom:1px solid var(--border);
-      text-align:center;
-    }
-    .page-hero .eyebrow { display:flex; align-items:center; gap:.8rem; margin-bottom:.7rem; justify-content:center; }
-    .page-hero .eyebrow::before { content:''; width:26px; height:1px; background:var(--orange); flex-shrink:0; }
-    .page-hero .ey-txt { font-size:.67rem; font-weight:700; letter-spacing:.32em; text-transform:uppercase; color:var(--orange); }
-    .page-hero h1 { font-family:'Playfair Display',serif; font-size:clamp(2.4rem,5vw,3.8rem); font-weight:800; line-height:1.05; color:var(--white); margin-top:.5rem; }
-    .page-hero h1 em { color:var(--orange); font-style:italic; }
-    .page-hero .hero-sub { font-size:.85rem; color:var(--muted); font-weight:300; margin-top:1rem; }
-    @keyframes fadeDown { from { opacity:0; transform:translateY(-14px); } to { opacity:1; transform:translateY(0); } }
-    @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
-    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-    .page-hero .eyebrow, .page-hero h1, .page-hero .hero-sub { opacity:0; }
-    .fonts-ready .page-hero .eyebrow { animation:fadeDown .7s ease both; }
-    .fonts-ready .page-hero h1 { animation:fadeUp .9s ease .15s both; }
-    .fonts-ready .page-hero .hero-sub { animation:fadeUp .9s ease .3s both; }
-
     .gg-wrap { max-width:1140px; margin:0 auto; padding:4rem 2rem 6rem; }
 
     .gallery-hint {
@@ -157,25 +70,7 @@
     .gi:nth-child(9) .gi-img { padding-bottom:74%; }
     .gi:nth-child(12) .gi-img { padding-bottom:60%; }
 
-    .back-link {
-      display:inline-flex; align-items:center; gap:.5rem;
-      color:var(--orange); text-decoration:none; font-size:.8rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
-      margin-top:2.5rem; transition:opacity .2s;
-    }
-    .back-link:hover { opacity:.7; }
-
-    footer {
-      background:#08080b; border-top:1px solid var(--border); padding:2rem 3rem;
-    }
-    .footer-inner {
-      max-width:1140px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;
-    }
-    .f-brand { font-family:'Playfair Display',serif; font-size:1rem; color:var(--white); }
-    .f-brand span { color:var(--orange); font-style:italic; }
-    .f-copy { font-size:.73rem; color:var(--muted); }
-
-    .reveal  { opacity:0; transform:translateY(26px); transition:opacity .75s ease,transform .75s ease; }
-    .reveal.on { opacity:1; transform:translateY(0); }
+    .back-link { margin-top:2.5rem; }
 
     @media(max-width:1020px) {
       .gi { grid-column:span 6 !important; grid-row:span 1 !important; }
@@ -185,9 +80,6 @@
       .gi:nth-child(12) .gi-img { padding-bottom:68% !important; }
     }
     @media(max-width:560px) {
-      nav { padding:1rem 1.5rem; }
-      .nav-links { display:none; }
-      .hamburger { display:flex; }
       .gg-wrap { padding:2rem 1.25rem 4rem; }
       .page-hero { padding:8rem 1.25rem 3rem; }
       .gi { grid-column:span 12 !important; grid-row:span 1 !important; }
@@ -196,7 +88,7 @@
 </head>
 <body>
 
-<nav>
+<nav class="subpage-nav">
   <a href="../index.html" class="nav-logo">
     <svg width="40" height="40" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="46" height="46" rx="5" fill="#32323c"/>

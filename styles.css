@@ -107,6 +107,7 @@ nav {
 /* ── SHARED ── */
 .section { padding:7rem 2rem; }
 .wrap    { max-width:1140px; margin:0 auto; }
+.content-wrap { max-width:1140px; margin:0 auto; padding:4rem 2rem 6rem; }
 .eyebrow { display:flex; align-items:center; gap:.8rem; margin-bottom:.7rem; }
 .eyebrow::before { content:''; width:26px; height:1px; background:var(--orange); flex-shrink:0; }
 .ey-txt  { font-size:.67rem; font-weight:700; letter-spacing:.32em; text-transform:uppercase; color:var(--orange); }
@@ -116,6 +117,25 @@ nav {
 .reveal  { opacity:0; transform:translateY(26px); transition:opacity .75s ease,transform .75s ease; }
 .reveal.on { opacity:1; transform:translateY(0); }
 .d1 { transition-delay:.12s; } .d2 { transition-delay:.24s; } .d3 { transition-delay:.36s; }
+
+/* ── SHARED CARDS (underline hover effect) ── */
+.card {
+  background:var(--bg2); border:1px solid var(--border);
+  position:relative; overflow:hidden;
+  padding:1.6rem;
+  transition:border-color .3s, transform .3s;
+}
+.card:hover { transform:translateY(-4px); border-color:var(--ob); }
+.card::after {
+  content:''; position:absolute; bottom:0; left:0;
+  width:0; height:2px;
+  background:linear-gradient(90deg,var(--orange),var(--gold));
+  transition:width .4s ease;
+}
+.card:hover::after { width:100%; }
+
+/* ── SHARED 2-COLUMN GRID ── */
+.grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:3rem; }
 
 /* ── ARTICLE BODY (articles + privacy page) ── */
 .article-body {
@@ -207,5 +227,6 @@ footer { background:#08080b; border-top:1px solid var(--border); padding:2rem 3r
   .page-hero { padding:8rem 1.25rem 3rem; }
   .article-hero { padding:8rem 1.25rem 3rem; }
   .article-body { padding:2rem 1.25rem 4rem; }
+  .content-wrap { padding:2rem 1.25rem 4rem; }
   .gi { grid-column:span 12 !important; grid-row:span 1 !important; }
 }

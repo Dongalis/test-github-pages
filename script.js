@@ -117,4 +117,7 @@
     lbPrev.addEventListener('click', function() { if (currentIndex > 0) loadItem(currentIndex - 1); });
     lbNext.addEventListener('click', function() { if (currentIndex < items.length - 1) loadItem(currentIndex + 1); });
   }
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js');
+  }
 })();

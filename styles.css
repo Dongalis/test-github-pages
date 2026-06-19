@@ -341,3 +341,6 @@ footer { background:#08080b; border-top:1px solid var(--border); padding:2rem 3r
   .lb-prev { left:4px; }
   .lb-next { right:4px; }
 }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; }
+}

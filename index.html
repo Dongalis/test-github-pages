@@ -683,6 +683,22 @@
   </div>
 </footer>
 
+<div class="lb" id="lightbox">
+  <div class="lb-inner">
+    <button class="lb-close" id="lbClose" aria-label="Zavrieť">&times;</button>
+    <button class="lb-prev" id="lbPrev" aria-label="Predchádzajúci">&lsaquo;</button>
+    <button class="lb-next" id="lbNext" aria-label="Nasledujúci">&rsaquo;</button>
+    <div class="lb-img-wrap" id="lbImgWrap">
+      <div class="lb-placeholder" id="lbPlaceholder">
+        <span class="gi-ico">&#x1F4F7;</span>
+        <span class="gi-lbl">Pridať fotografiu</span>
+        <span class="lb-placeholder-txt">Nahraďte súborom v galérii</span>
+      </div>
+    </div>
+    <div class="lb-cap" id="lbCap"></div>
+  </div>
+</div>
+
 <script src="script.js"></script>
 <script>
   /* Lock hero height (mobile) */
@@ -709,22 +725,6 @@
       .catch(() => { formOk.textContent = '✗ Chyba pri odosielaní. Skúste neskôr.'; formOk.style.display = 'block'; });
   });
 </script>
-
-<div class="lb" id="lightbox">
-  <div class="lb-inner">
-    <button class="lb-close" id="lbClose" aria-label="Zavrieť">&times;</button>
-    <button class="lb-prev" id="lbPrev" aria-label="Predchádzajúci">&lsaquo;</button>
-    <button class="lb-next" id="lbNext" aria-label="Nasledujúci">&rsaquo;</button>
-    <div class="lb-img-wrap" id="lbImgWrap">
-      <div class="lb-placeholder" id="lbPlaceholder">
-        <span class="gi-ico">&#x1F4F7;</span>
-        <span class="gi-lbl">Pridať fotografiu</span>
-        <span class="lb-placeholder-txt">Nahraďte súborom v galérii</span>
-      </div>
-    </div>
-    <div class="lb-cap" id="lbCap"></div>
-  </div>
-</div>
 
 </body>
 </html>

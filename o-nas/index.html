@@ -13,55 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Raleway:wght@300;400;500;600;700&display=block" rel="stylesheet">
   <link rel="stylesheet" href="../styles.css">
   <style>
-    .tl-wrap { max-width:800px; margin:0 auto; padding:4rem 2rem 6rem; }
-    .tl { position:relative; }
-    .tl::before {
-      content:''; position:absolute; left:10px; top:0; bottom:0;
-      width:2px; background:linear-gradient(180deg,var(--orange),var(--gold),transparent);
-    }
-    .tl-item { position:relative; padding-left:3rem; padding-bottom:2.5rem; }
-    .tl-item:last-child { padding-bottom:0; }
-    .tl-dot {
-      position:absolute; left:-2px; top:4px;
-      width:24px; height:24px; border-radius:50%;
-      background:var(--bg); border:2px solid var(--orange);
-      display:flex; align-items:center; justify-content:center;
-    }
-    .tl-dot::after {
-      content:''; width:10px; height:10px; border-radius:50%;
-      background:var(--orange);
-    }
-    .tl-year {
-      display:inline-block;
-      font-family:'Playfair Display',serif; font-size:.85rem; font-weight:700;
-      color:var(--gold); letter-spacing:.15em; text-transform:uppercase;
-      margin-bottom:.25rem;
-    }
-    .tl-title {
-      font-family:'Playfair Display',serif; font-size:1.2rem;
-      color:var(--white); font-weight:700; margin-bottom:.35rem;
-    }
-    .tl-desc {
-      font-size:.88rem; color:var(--muted); line-height:1.75; font-weight:300;
-    }
-    .tl-tag {
-      display:inline-block; font-size:.58rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
-      color:var(--orange); border:1px solid var(--ob); padding:.18rem .65rem; margin-top:.5rem;
-      background:rgba(255,107,0,.05);
-    }
-    .tl-link {
-      display:inline-flex; align-items:center; gap:.35rem;
-      font-size:.7rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase;
-      color:var(--gold); text-decoration:none; margin-top:.6rem;
-      transition:opacity .2s;
-    }
-    .tl-link:hover { opacity:.7; }
-
     .back-link { margin-top:3rem; padding-left:3rem; }
-
-    @media(max-width:560px) {
-      .tl-wrap { padding:2rem 1.25rem 4rem; }
-    }
   </style>
 </head>
 <body>
@@ -111,9 +63,9 @@
   <!-- Description -->
   <div class="about-section" style="margin-bottom:4rem">
     <h2 class="s-head" style="margin-bottom:1rem">Kto <em>sme</em></h2>
-    <p style="font-size:1rem;font-weight:300;line-height:1.9;color:var(--muted);margin-bottom:1.25rem">Big Band Storm je <strong>mládežnícky big band</strong>, ktorý vznikol v roku 2019 z nadšenia niekoľkých mladých hudobníkov. Odvtedy sme prešli dlhú cestu — od prvých skúšok v malej miestnosti až po medzinárodné pódiá v Taliansku.</p>
-    <p style="font-size:1rem;font-weight:300;line-height:1.9;color:var(--muted);margin-bottom:1.25rem">Spája nás láska k hudbe. Hráme <strong>jazzové štandardy</strong>, filmovú hudbu, swing aj moderné aranžmány. Našim cieľom je nielen zabávať publikum, ale aj šíriť radosť z hrania a ukazovať, že mladí ľudia vedia vytvoriť veľký zvuk.</p>
-    <p style="font-size:1rem;font-weight:300;line-height:1.9;color:var(--muted)">Pravidelne sa zúčastňujeme celoslovenských súťaží big bandov, kde získavame popredné umiestnenia a zlaté pásma. V roku 2025 sme absolvovali turné v talianskej Bologni, čo bol náš doteraz najväčší medzinárodný úspech.</p>
+    <p class="desc" style="margin-bottom:1.25rem">Big Band Storm je <strong>mládežnícky big band</strong>, ktorý vznikol v roku 2019 z nadšenia niekoľkých mladých hudobníkov. Odvtedy sme prešli dlhú cestu — od prvých skúšok v malej miestnosti až po medzinárodné pódiá v Taliansku.</p>
+    <p class="desc" style="margin-bottom:1.25rem">Spája nás láska k hudbe. Hráme <strong>jazzové štandardy</strong>, filmovú hudbu, swing aj moderné aranžmány. Našim cieľom je nielen zabávať publikum, ale aj šíriť radosť z hrania a ukazovať, že mladí ľudia vedia vytvoriť veľký zvuk.</p>
+    <p class="desc">Pravidelne sa zúčastňujeme celoslovenských súťaží big bandov, kde získavame popredné umiestnenia a zlaté pásma. V roku 2025 sme absolvovali turné v talianskej Bologni, čo bol náš doteraz najväčší medzinárodný úspech.</p>
   </div>
 
   <!-- History timeline -->

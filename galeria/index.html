@@ -15,34 +15,6 @@
   <style>
     .gg-wrap { max-width:1140px; margin:0 auto; padding:4rem 2rem 6rem; }
 
-    .gallery-hint {
-      margin-bottom:2rem; padding:1.25rem 1.5rem;
-      border:1px dashed rgba(255,107,0,.15); background:rgba(255,107,0,.025);
-      font-size:.78rem; color:var(--muted); font-style:italic; text-align:center;
-    }
-
-    .gg {
-      display:grid; grid-template-columns:repeat(12,1fr); gap:10px;
-    }
-    .gi { position:relative; overflow:hidden; cursor:pointer; }
-    .gi-img { width:100%; padding-bottom:68%; position:relative; overflow:hidden; }
-    .gi-fill {
-      position:absolute; inset:0;
-      display:flex; align-items:center; justify-content:center; flex-direction:column; gap:.55rem;
-      transition:transform .45s ease;
-    }
-    .gi:hover .gi-fill { transform:scale(1.05); }
-    .gi-ico { font-size:1.8rem; opacity:.25; }
-    .gi-lbl { font-size:.62rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.12); font-weight:600; }
-    .gi-ov {
-      position:absolute; inset:0;
-      background:linear-gradient(to top,rgba(255,107,0,.75) 0%,transparent 55%);
-      opacity:0; transition:opacity .32s;
-      display:flex; align-items:flex-end; padding:.85rem 1rem;
-    }
-    .gi:hover .gi-ov { opacity:1; }
-    .gi-cap { font-size:.72rem; font-weight:700; letter-spacing:.08em; color:white; }
-
     .gi:nth-child(1) { grid-column:span 8; grid-row:span 2; }
     .gi:nth-child(2) { grid-column:span 4; }
     .gi:nth-child(3) { grid-column:span 4; }
@@ -76,6 +48,66 @@
 
     .back-link { margin-top:2.5rem; }
 
+    .lb {
+      position:fixed; inset:0; z-index:1000;
+      background:rgba(0,0,0,.92); backdrop-filter:blur(4px);
+      display:flex; align-items:center; justify-content:center;
+      opacity:0; visibility:hidden; transition:opacity .3s,visibility .3s;
+      cursor:pointer;
+    }
+    .lb.active { opacity:1; visibility:visible; }
+    .lb-inner {
+      position:relative; max-width:90vw; max-height:90vh;
+      display:flex; flex-direction:column; align-items:center;
+      cursor:default;
+    }
+    .lb-img-wrap {
+      position:relative; display:flex; align-items:center; justify-content:center;
+      min-width:200px; min-height:120px;
+    }
+    .lb-img-wrap img {
+      max-width:90vw; max-height:80vh; width:auto; height:auto;
+      border-radius:6px; box-shadow:0 8px 40px rgba(0,0,0,.6);
+      display:block;
+    }
+    .lb-placeholder {
+      display:flex; flex-direction:column; align-items:center; gap:1.5rem;
+      padding:4rem 3rem; border-radius:12px; min-width:280px;
+      background:linear-gradient(145deg,#1a1a24,#262638);
+    }
+    .lb-placeholder .gi-ico { font-size:3.5rem; opacity:.35; }
+    .lb-placeholder .gi-lbl { font-size:.82rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.15); font-weight:600; }
+    .lb-placeholder-txt { font-size:.75rem; color:rgba(255,255,255,.2); font-style:italic; }
+
+    .lb-close {
+      position:absolute; top:-44px; right:0;
+      background:none; border:none; color:rgba(255,255,255,.5);
+      font-size:1.6rem; cursor:pointer; padding:.25rem; line-height:1;
+      transition:color .2s;
+    }
+    .lb-close:hover { color:#fff; }
+
+    .lb-cap {
+      margin-top:1rem; font-size:.78rem; color:rgba(255,255,255,.5);
+      letter-spacing:.06em; text-align:center; font-weight:500;
+    }
+
+    .lb-prev, .lb-next {
+      position:absolute; top:50%; transform:translateY(-50%);
+      background:rgba(255,255,255,.06); border:none;
+      color:rgba(255,255,255,.4); font-size:1.8rem; cursor:pointer;
+      padding:.6rem .45rem; line-height:1; border-radius:4px;
+      transition:background .2s,color .2s;
+    }
+    .lb-prev:hover, .lb-next:hover { background:rgba(255,255,255,.12); color:#fff; }
+    .lb-prev { left:-60px; }
+    .lb-next { right:-60px; }
+
+    @media(max-width:600px) {
+      .lb-prev { left:4px; }
+      .lb-next { right:4px; }
+    }
+
     @media(max-width:1020px) {
       .gi { grid-column:span 6 !important; grid-row:span 1 !important; }
       .gi:nth-child(1) .gi-img { padding-bottom:68% !important; }
@@ -85,8 +117,6 @@
     }
     @media(max-width:560px) {
       .gg-wrap { padding:2rem 1.25rem 4rem; }
-      .page-hero { padding:8rem 1.25rem 3rem; }
-      .gi { grid-column:span 12 !important; grid-row:span 1 !important; }
     }
   </style>
 </head>
@@ -133,54 +163,52 @@
 </section>
 
 <div class="gg-wrap">
-  <div class="gallery-hint">📸 Tieto miesta nahraďte vlastnými fotografiami kapely.</div>
-
   <div class="gg">
-    <div class="gi reveal">
+    <div class="gi reveal" data-src="foto-01.jpg" data-label="Koncert">
       <div class="gi-img"><div class="gi-fill"><span class="gi-ico">📷</span><span class="gi-lbl">Koncert</span></div></div>
       <div class="gi-ov"><span class="gi-cap">Celá kapela · Koncertný večer</span></div>
     </div>
-    <div class="gi reveal">
+    <div class="gi reveal" data-src="foto-02.jpg" data-label="Skúška">
       <div class="gi-img"><div class="gi-fill"><span class="gi-ico">🎷</span><span class="gi-lbl">Skúška</span></div></div>
       <div class="gi-ov"><span class="gi-cap">Skúška</span></div>
     </div>
-    <div class="gi reveal">
+    <div class="gi reveal" data-src="foto-03.jpg" data-label="Pódium">
       <div class="gi-img"><div class="gi-fill"><span class="gi-ico">🎺</span><span class="gi-lbl">Pódium</span></div></div>
       <div class="gi-ov"><span class="gi-cap">Saxofónová sekcia</span></div>
     </div>
-    <div class="gi reveal">
+    <div class="gi reveal" data-src="foto-04.jpg" data-label="Turné">
       <div class="gi-img"><div class="gi-fill"><span class="gi-ico">📷</span><span class="gi-lbl">Turné</span></div></div>
       <div class="gi-ov"><span class="gi-cap">Bologna 2025</span></div>
     </div>
-    <div class="gi reveal">
+    <div class="gi reveal" data-src="foto-05.jpg" data-label="Rytmus">
       <div class="gi-img"><div class="gi-fill"><span class="gi-ico">🥁</span><span class="gi-lbl">Rytmus</span></div></div>
       <div class="gi-ov"><span class="gi-cap">Rytmická sekcia</span></div>
     </div>
-    <div class="gi reveal">
+    <div class="gi reveal" data-src="foto-06.jpg" data-label="Zákulisie">
       <div class="gi-img"><div class="gi-fill"><span class="gi-ico">🎵</span><span class="gi-lbl">Zákulisie</span></div></div>
       <div class="gi-ov"><span class="gi-cap">Po koncerte</span></div>
     </div>
-    <div class="gi reveal">
+    <div class="gi reveal" data-src="foto-07.jpg" data-label="Súťaž">
       <div class="gi-img"><div class="gi-fill"><span class="gi-ico">📷</span><span class="gi-lbl">Súťaž</span></div></div>
       <div class="gi-ov"><span class="gi-cap">Celoslovenská súťaž</span></div>
     </div>
-    <div class="gi reveal">
+    <div class="gi reveal" data-src="foto-08.jpg" data-label="Trúbky">
       <div class="gi-img"><div class="gi-fill"><span class="gi-ico">🎺</span><span class="gi-lbl">Trúbky</span></div></div>
       <div class="gi-ov"><span class="gi-cap">Trúbková sekcia</span></div>
     </div>
-    <div class="gi reveal">
+    <div class="gi reveal" data-src="foto-09.jpg" data-label="Spoločná fotka">
       <div class="gi-img"><div class="gi-fill"><span class="gi-ico">📷</span><span class="gi-lbl">Spoločná fotka</span></div></div>
       <div class="gi-ov"><span class="gi-cap">Big Band Storm</span></div>
     </div>
-    <div class="gi reveal">
+    <div class="gi reveal" data-src="foto-10.jpg" data-label="Event">
       <div class="gi-img"><div class="gi-fill"><span class="gi-ico">🎬</span><span class="gi-lbl">Event</span></div></div>
       <div class="gi-ov"><span class="gi-cap">Miestny festival</span></div>
     </div>
-    <div class="gi reveal">
+    <div class="gi reveal" data-src="foto-11.jpg" data-label="Aftermovie">
       <div class="gi-img"><div class="gi-fill"><span class="gi-ico">🎷</span><span class="gi-lbl">Aftermovie</span></div></div>
       <div class="gi-ov"><span class="gi-cap">Zákulisný moment</span></div>
     </div>
-    <div class="gi reveal">
+    <div class="gi reveal" data-src="foto-12.jpg" data-label="Skupinová fotka">
       <div class="gi-img"><div class="gi-fill"><span class="gi-ico">📷</span><span class="gi-lbl">Skupinová fotka</span></div></div>
       <div class="gi-ov"><span class="gi-cap">Spoločná fotografia</span></div>
     </div>
@@ -196,25 +224,100 @@
   </div>
 </footer>
 
-<script>
-  const io = new IntersectionObserver(es => {
-    es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+<script src="../script.js"></script>
+<div class="lb" id="lightbox">
+  <div class="lb-inner">
+    <button class="lb-close" id="lbClose" aria-label="Zavrieť">&times;</button>
+    <button class="lb-prev" id="lbPrev" aria-label="Predchádzajúci">&lsaquo;</button>
+    <button class="lb-next" id="lbNext" aria-label="Nasledujúci">&rsaquo;</button>
+    <div class="lb-img-wrap" id="lbImgWrap">
+      <div class="lb-placeholder" id="lbPlaceholder">
+        <span class="gi-ico">&#x1F4F7;</span>
+        <span class="gi-lbl">Pridať fotografiu</span>
+        <span class="lb-placeholder-txt">Nahraďte súborom v galérii</span>
+      </div>
+    </div>
+    <div class="lb-cap" id="lbCap"></div>
+  </div>
+</div>
 
-  var hamburger = document.getElementById('hamburger');
-  var mobileMenu = document.getElementById('mobileMenu');
-  if (hamburger && mobileMenu) {
-    hamburger.addEventListener('click', function () {
-      document.documentElement.classList.toggle('menu-open');
-    });
-    mobileMenu.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        document.documentElement.classList.remove('menu-open');
+<script>
+  (function() {
+    var items = document.querySelectorAll('.gi');
+    var lb = document.getElementById('lightbox');
+    var lbImgWrap = document.getElementById('lbImgWrap');
+    var lbPlaceholder = document.getElementById('lbPlaceholder');
+    var lbCap = document.getElementById('lbCap');
+    var lbClose = document.getElementById('lbClose');
+    var lbPrev = document.getElementById('lbPrev');
+    var lbNext = document.getElementById('lbNext');
+    var currentIndex = -1;
+
+    function loadItem(idx) {
+      var item = items[idx];
+      if (!item) return;
+      currentIndex = idx;
+      var src = item.getAttribute('data-src');
+      var label = item.getAttribute('data-label') || '';
+      var cap = item.querySelector('.gi-cap');
+      var caption = cap ? cap.textContent : label;
+
+      lbPlaceholder.style.display = 'none';
+      var existing = lbImgWrap.querySelector('img');
+      if (existing) existing.remove();
+
+      lbCap.textContent = caption;
+
+      if (src) {
+        var img = document.createElement('img');
+        img.alt = caption;
+        img.onload = function() { lbPlaceholder.style.display = 'none'; };
+        img.onerror = function() {
+          img.remove();
+          lbPlaceholder.querySelector('.gi-lbl').textContent = label || 'Nahrať fotografiu';
+          lbPlaceholder.querySelector('.lb-placeholder-txt').textContent = 'Súbor ' + src + ' sa nenašiel';
+          lbPlaceholder.style.display = 'flex';
+        };
+        img.src = src;
+        lbImgWrap.appendChild(img);
+      } else {
+        lbPlaceholder.querySelector('.gi-lbl').textContent = label || 'Pridať fotografiu';
+        lbPlaceholder.querySelector('.lb-placeholder-txt').textContent = 'Nahraďte súborom v galérii';
+        lbPlaceholder.style.display = 'flex';
+      }
+
+      lbPrev.style.display = idx > 0 ? '' : 'none';
+      lbNext.style.display = idx < items.length - 1 ? '' : 'none';
+    }
+
+    items.forEach(function(item, i) {
+      item.addEventListener('click', function() {
+        lb.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        loadItem(i);
       });
     });
-  }
-  document.fonts.ready.then(function(){ document.documentElement.classList.add('fonts-ready'); });
+
+    function closeLB() {
+      lb.classList.remove('active');
+      document.body.style.overflow = '';
+      var img = lbImgWrap.querySelector('img');
+      if (img) img.remove();
+      lbPlaceholder.style.display = 'flex';
+      currentIndex = -1;
+    }
+
+    lbClose.addEventListener('click', closeLB);
+    lb.addEventListener('click', function(e) { if (e.target === lb) closeLB(); });
+    document.addEventListener('keydown', function(e) {
+      if (!lb.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLB();
+      if (e.key === 'ArrowLeft' && currentIndex > 0) loadItem(currentIndex - 1);
+      if (e.key === 'ArrowRight' && currentIndex < items.length - 1) loadItem(currentIndex + 1);
+    });
+    lbPrev.addEventListener('click', function() { if (currentIndex > 0) loadItem(currentIndex - 1); });
+    lbNext.addEventListener('click', function() { if (currentIndex < items.length - 1) loadItem(currentIndex + 1); });
+  })();
 </script>
 </body>
 </html>

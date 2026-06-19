@@ -13,31 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Raleway:wght@300;400;500;600;700&display=block" rel="stylesheet">
   <link rel="stylesheet" href="../styles.css">
   <style>
-    .nav-back { color:var(--muted); text-decoration:none; font-size:.76rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; transition:color .2s; }
-    .nav-back:hover { color:var(--orange); }
-
-    .article-body {
-      max-width:760px; margin:0 auto; padding:4rem 2rem 6rem;
-    }
-    .article-body p {
-      font-size:1rem; font-weight:300; line-height:1.9; color:var(--muted); margin-bottom:1.25rem;
-    }
-    .article-body p strong { color:var(--text); font-weight:600; }
-    .article-body h2 {
-      font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:700; color:var(--white); margin-top:2.5rem; margin-bottom:.8rem;
-    }
-    .article-body .highlight-box {
-      background:var(--bg2); border:1px solid var(--border); border-left:3px solid var(--orange);
-      padding:1.5rem 2rem; margin:1.5rem 0; border-radius:0 4px 4px 0;
-    }
-    .article-body .highlight-box p { margin-bottom:0; }
-
     .back-link { margin-top:2rem; }
-
-    @media(max-width:560px) {
-      .article-body { padding:2rem 1.25rem 4rem; }
-      .article-hero { padding:8rem 1.25rem 3rem; }
-    }
   </style>
 </head>
 <body>
@@ -103,25 +79,6 @@
   </div>
 </footer>
 
-<script>
-  const io = new IntersectionObserver(es => {
-    es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-  var hamburger = document.getElementById('hamburger');
-  var mobileMenu = document.getElementById('mobileMenu');
-  if (hamburger && mobileMenu) {
-    hamburger.addEventListener('click', function () {
-      document.documentElement.classList.toggle('menu-open');
-    });
-    mobileMenu.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        document.documentElement.classList.remove('menu-open');
-      });
-    });
-  }
-  document.fonts.ready.then(function(){ document.documentElement.classList.add('fonts-ready'); });
-</script>
+<script src="../script.js"></script>
 </body>
 </html>

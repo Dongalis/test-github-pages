@@ -61,7 +61,6 @@
 
     @media(max-width:560px) {
       .tl-wrap { padding:2rem 1.25rem 4rem; }
-      .page-hero { padding:8rem 1.25rem 3rem; }
     }
   </style>
 </head>
@@ -219,26 +218,7 @@
   </div>
 </footer>
 
-<script>
-  const io = new IntersectionObserver(es => {
-    es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-  var hamburger = document.getElementById('hamburger');
-  var mobileMenu = document.getElementById('mobileMenu');
-  if (hamburger && mobileMenu) {
-    hamburger.addEventListener('click', function () {
-      document.documentElement.classList.toggle('menu-open');
-    });
-    mobileMenu.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        document.documentElement.classList.remove('menu-open');
-      });
-    });
-  }
-  document.fonts.ready.then(function(){ document.documentElement.classList.add('fonts-ready'); });
-</script>
+<script src="../script.js"></script>
 
 </body>
 </html>

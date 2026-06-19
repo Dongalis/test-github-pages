@@ -14,6 +14,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Raleway:wght@300;400;500;600;700&display=block" rel="stylesheet">
+  <style>
+    #page-loader{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:#0c0c10;transition:opacity .4s ease}
+    html.fonts-ready #page-loader{opacity:0;pointer-events:none}
+    .loader-spinner{width:36px;height:36px;border:3px solid #1c1c26;border-top-color:#FF6B00;border-radius:50%;opacity:0;transition:opacity .3s ease;animation:spin .8s linear infinite}
+    html.show-loader .loader-spinner{opacity:1}
+    @keyframes spin{to{transform:rotate(360deg)}}
+  </style>
   <link rel="stylesheet" href="../styles.css">
   <style>
     .gi:nth-child(1) { grid-column:span 8; grid-row:span 2; }
@@ -69,6 +76,8 @@
   </script>
 </head>
 <body>
+
+<div id="page-loader" aria-hidden="true"><div class="loader-spinner"></div></div>
 
 <nav class="subpage-nav">
   <a href="../index.html" class="nav-logo">

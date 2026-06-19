@@ -17,7 +17,12 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
 
-  document.fonts.ready.then(function(){ document.documentElement.classList.add('fonts-ready'); });
+  var lt = setTimeout(function(){ document.documentElement.classList.add('show-loader'); }, 400);
+  document.fonts.ready.then(function(){
+    clearTimeout(lt);
+    document.documentElement.classList.add('fonts-ready');
+    document.documentElement.classList.remove('show-loader');
+  });
 
   /* Nav scroll (homepage: transparent → opaque) */
   var nav = document.getElementById('navbar');

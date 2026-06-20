@@ -630,30 +630,27 @@
 
 <script defer src="script.js"></script>
 <script>
-  /* Lock hero height (mobile) */
-  (function() {
-    var hero = document.getElementById('hero');
-    if (window.innerWidth <= 560 && !hero.style.minHeight) {
-      hero.style.minHeight = window.innerHeight + 'px';
-    }
-  })();
+  const hero = document.getElementById('hero');
+  if (hero && window.innerWidth <= 560 && !hero.style.minHeight) {
+    hero.style.minHeight = window.innerHeight + 'px';
+  }
 
-  /* AJAX form submission */
   const form = document.getElementById('contactForm');
   const formOk = document.getElementById('formOk');
-  if (!form) return;
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    const data = Object.fromEntries(new FormData(form));
-    fetch('https://formsubmit.co/ajax/app.web3forms.com.immortal255@passmail.net', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(data)
-    })
-      .then(r => r.json())
-      .then(r => { if (r.success) { form.reset(); formOk.style.display = 'block'; } })
-      .catch(() => { formOk.textContent = '✗ Chyba pri odosielaní. Skúste neskôr.'; formOk.style.display = 'block'; });
-  });
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var data = Object.fromEntries(new FormData(form));
+      fetch('https://formsubmit.co/ajax/app.web3forms.com.immortal255@passmail.net', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      })
+        .then(function(r) { return r.json(); })
+        .then(function(r) { if (r.success) { form.reset(); formOk.style.display = 'block'; } })
+        .catch(function() { formOk.textContent = '✗ Chyba pri odosielaní. Skúste neskôr.'; formOk.style.display = 'block'; });
+    });
+  }
 </script>
 
 </body>

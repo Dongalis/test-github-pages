@@ -18,7 +18,7 @@
   document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
 
   var lt = setTimeout(function(){ document.documentElement.classList.add('show-loader'); }, 400);
-  document.fonts.ready.then(function(){
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(function(){
     clearTimeout(lt);
     document.documentElement.classList.add('fonts-ready');
     document.documentElement.classList.remove('show-loader');

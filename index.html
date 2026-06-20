@@ -699,6 +699,7 @@
   /* AJAX form submission */
   const form = document.getElementById('contactForm');
   const formOk = document.getElementById('formOk');
+  if (!form) return;
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(form));

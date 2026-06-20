@@ -111,8 +111,8 @@
         lbPlaceholder.style.display = 'flex';
       }
 
-      lbPrev.style.display = idx > 0 ? '' : 'none';
-      lbNext.style.display = idx < items.length - 1 ? '' : 'none';
+      lbPrev.style.display = items.length > 1 ? '' : 'none';
+      lbNext.style.display = items.length > 1 ? '' : 'none';
     }
 
     items.forEach(function(item, i) {
@@ -151,11 +151,11 @@
         }
       }
       if (e.key === 'Escape') closeLB();
-      if (e.key === 'ArrowLeft' && currentIndex > 0) loadItem(currentIndex - 1);
-      if (e.key === 'ArrowRight' && currentIndex < items.length - 1) loadItem(currentIndex + 1);
+      if (e.key === 'ArrowLeft') loadItem(currentIndex > 0 ? currentIndex - 1 : items.length - 1);
+      if (e.key === 'ArrowRight') loadItem(currentIndex < items.length - 1 ? currentIndex + 1 : 0);
     });
-    lbPrev.addEventListener('click', function() { if (currentIndex > 0) loadItem(currentIndex - 1); });
-    lbNext.addEventListener('click', function() { if (currentIndex < items.length - 1) loadItem(currentIndex + 1); });
+    lbPrev.addEventListener('click', function() { loadItem(currentIndex > 0 ? currentIndex - 1 : items.length - 1); });
+    lbNext.addEventListener('click', function() { loadItem(currentIndex < items.length - 1 ? currentIndex + 1 : 0); });
 
   }
 

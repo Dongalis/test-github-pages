@@ -6,9 +6,9 @@ const URLS = [
   '/clenovia/',
   '/galeria/',
   '/o-nas/',
-  '/o-nas/clanok-zlate-pasmo.html',
-  '/o-nas/clanok-turne-bologna.html',
-  '/o-nas/clanok-vitazi-kategorie.html',
+  '/clanky/clanok-zlate-pasmo.html',
+  '/clanky/clanok-turne-bologna.html',
+  '/clanky/clanok-vitazi-kategorie.html',
   '/ochrana-osobnych-udajov.html',
   '/head_photo.jpg'
 ];

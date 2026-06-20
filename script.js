@@ -32,19 +32,6 @@
     });
   }
 
-  /* Floating music notes (homepage hero) */
-  var nl = document.getElementById('notesLayer');
-  if (nl) {
-    var NOTES = ['♩','♪','♫','♬','𝄞'];
-    for (var i = 0; i < 15; i++) {
-      var n = document.createElement('span');
-      n.className = 'fnote';
-      n.textContent = NOTES[Math.floor(Math.random() * NOTES.length)];
-      n.style.cssText = 'left:' + (4 + Math.random()*92) + '%; bottom:' + (Math.random()*25) + '%; font-size:' + (.9 + Math.random()*1.3) + 'rem; animation-duration:' + (6 + Math.random()*7) + 's; animation-delay:' + (Math.random()*9) + 's;';
-      nl.appendChild(n);
-    }
-  }
-
   /* Lightbox (galeria + homepage) */
   var lb = document.getElementById('lightbox');
   if (lb) {

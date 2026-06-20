@@ -22,12 +22,16 @@ body { font-family:'Raleway',sans-serif; background:var(--bg); color:var(--text)
 :focus-visible { outline:2px solid var(--orange); outline-offset:2px; }
 #about, #achievements, #events, #gallery, #contact { scroll-margin-top:6rem; }
 
-/* ── NAV ── */
+/* ── NAV (transparent → opaque on scroll) ── */
 nav {
   position:fixed; top:0; left:0; right:0; z-index:999;
   padding:1rem 3rem;
   display:flex; align-items:center; justify-content:space-between;
+  background:transparent;
+  border-bottom:1px solid transparent;
+  transition:background .3s, border-color .3s;
 }
+#navbar.scrolled { background:rgba(12,12,16,0.97); border-bottom-color:var(--border); }
 .nav-logo { display:flex; align-items:center; gap:.65rem; text-decoration:none; }
 .nav-name { font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; color:var(--white); }
 .nav-name span { color:var(--orange); font-style:italic; }
@@ -44,13 +48,6 @@ nav {
 }
 .nav-links a:hover { color:var(--white); }
 .nav-links a:hover::after { width:100%; }
-
-/* ── SUB-PAGE NAV (solid background) ── */
-.subpage-nav {
-  background:rgba(12,12,16,0.97);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid var(--border);
-}
 
 /* ── HAMBURGER ── */
 .hamburger {
@@ -333,9 +330,9 @@ footer { background:#08080b; border-top:1px solid var(--border); padding:2rem 3r
 @media(max-width:780px) {
   .hamburger { display:flex; }
   .nav-links { display:none; }
+  nav { padding:1rem 1.5rem; }
 }
 @media(max-width:560px) {
-  nav { padding:1rem 1.5rem; }
   .section { padding:5rem 1.25rem; }
   .page-hero { padding:8rem 1.25rem 3rem; }
   .article-hero { padding:8rem 1.25rem 3rem; }

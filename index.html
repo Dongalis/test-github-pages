@@ -27,18 +27,6 @@
   </style>
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* ── NAV (transparent, gets opaque on scroll) ── */
-    nav {
-      position:fixed; top:0; left:0; right:0; z-index:999;
-      padding:1rem 3rem;
-      display:flex; align-items:center; justify-content:space-between;
-      background:transparent;
-      border-bottom:1px solid transparent;
-      transition:background .3s, border-color .3s;
-    }
-    #navbar.scrolled { background:rgba(12,12,16,0.97); border-bottom-color:var(--border); }
-
-
     /* ── HERO ── */
     #hero {
       width:100%; max-height:83vh; position:relative;
@@ -310,7 +298,6 @@
       .contact-grid { grid-template-columns:1fr; gap:3rem; }
     }
     @media(max-width:780px) {
-      nav { padding:1rem 1.5rem; }
       .gi:nth-child(1) { grid-column:span 12; }
       .gi:nth-child(2),.gi:nth-child(3) { grid-column:span 6; }
       .gi:nth-child(4),.gi:nth-child(5),.gi:nth-child(6) { grid-column:span 4; }
@@ -348,51 +335,7 @@
 
 <div id="page-loader" aria-hidden="true"><div class="loader-spinner"></div></div>
 
-<!-- ══════════════════════ NAVIGATION ══════════════════════ -->
-<nav id="navbar">
-  <a href="#hero" class="nav-logo">
-    <!-- Recreated logo based on description -->
-    <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Gray background -->
-      <rect width="46" height="46" rx="5" fill="#32323c"/>
-      <!-- Treble staff — 5 lines across the full logo -->
-      <line x1="3" y1="22" x2="43" y2="22" stroke="white" stroke-opacity="0.22" stroke-width="0.9"/>
-      <line x1="3" y1="27" x2="43" y2="27" stroke="white" stroke-opacity="0.22" stroke-width="0.9"/>
-      <line x1="3" y1="32" x2="43" y2="32" stroke="white" stroke-opacity="0.22" stroke-width="0.9"/>
-      <line x1="3" y1="37" x2="43" y2="37" stroke="white" stroke-opacity="0.22" stroke-width="0.9"/>
-      <line x1="3" y1="42" x2="43" y2="42" stroke="white" stroke-opacity="0.22" stroke-width="0.9"/>
-      <!-- Letter B — left half, white cursive -->
-      <text x="3" y="40" font-family="Georgia,'Times New Roman',serif"
-            font-size="28" font-style="italic" font-weight="bold" fill="white">B</text>
-      <!-- Orange filled circle — S side -->
-      <circle cx="34" cy="28" r="11" fill="var(--orange)"/>
-      <!-- S cutout — shows the gray background through the letter shape -->
-      <text x="27" y="37" font-family="Georgia,'Times New Roman',serif"
-            font-size="19" font-style="italic" font-weight="bold" fill="#32323c">S</text>
-    </svg>
-    <span class="nav-name">Big Band <span>Storm</span></span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#about">O nás</a></li>
-    <li><a href="#achievements">Úspechy</a></li>
-    <li><a href="#events">Udalosti</a></li>
-    <li><a href="clenovia/index.html">Členovia</a></li>
-    <li><a href="#gallery">Galéria</a></li>
-    <li><a href="#contact">Kontakt</a></li>
-  </ul>
-  <button class="hamburger" id="hamburger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#about">O nás</a>
-  <a href="#achievements">Úspechy</a>
-  <a href="#events">Udalosti</a>
-  <a href="clenovia/index.html">Členovia</a>
-  <a href="#gallery">Galéria</a>
-  <a href="#contact">Kontakt</a>
-</div>
+<div id="nav-root"></div>
 
 <!-- ══════════════════════ HERO ══════════════════════ -->
 <section id="hero">

@@ -10,6 +10,7 @@ const URLS = [
   '/clanky/turne-bologna.html',
   '/clanky/vitazi-kategorie.html',
   '/ochrana-osobnych-udajov.html',
+  '/nav.html',
   '/head_photo.jpg'
 ];
 

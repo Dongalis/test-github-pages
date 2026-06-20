@@ -98,6 +98,7 @@ nav {
 @keyframes fadeDown { from { opacity:0; transform:translateY(-14px); } to { opacity:1; transform:translateY(0); } }
 @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
 @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes sBlink { 0%,100%{opacity:.9} 50%{opacity:.15} }
 
 .page-hero .eyebrow, .page-hero h1, .page-hero .hero-sub,
 .article-hero .eyebrow, .article-hero h1, .article-hero .hero-sub { opacity:0; }
@@ -117,7 +118,8 @@ nav {
 .ey-txt  { font-size:.67rem; font-weight:700; letter-spacing:.32em; text-transform:uppercase; color:var(--orange); }
 .s-head  { font-family:'Playfair Display',serif; font-size:clamp(2.4rem,5vw,3.8rem); font-weight:800; line-height:1.05; color:var(--white); }
 .s-head em { color:var(--orange); font-style:italic; }
-.desc { font-size:1rem; font-weight:300; line-height:1.9; color:var(--muted); }
+.desc { font-size:1rem; font-weight:300; line-height:1.9; color:var(--muted); margin-bottom:1.25rem; }
+.desc:last-child { margin-bottom:0; }
 
 .reveal  { opacity:0; transform:translateY(26px); transition:opacity .75s ease,transform .75s ease; }
 .reveal.on { opacity:1; transform:translateY(0); }
@@ -176,13 +178,6 @@ nav {
 }
 .article-body .highlight-box p { margin-bottom:0; }
 .highlight-gold { border-left-color:var(--gold) !important; }
-
-/* ── NAV BACK (article pages) ── */
-.nav-back {
-  color:var(--muted); text-decoration:none; font-size:.76rem; font-weight:600;
-  letter-spacing:.18em; text-transform:uppercase; transition:color .2s;
-}
-.nav-back:hover { color:var(--orange); }
 
 /* ── GALLERY ITEM BASE (shared by index and galeria page) ── */
 .gi { position:relative; overflow:hidden; cursor:pointer; }

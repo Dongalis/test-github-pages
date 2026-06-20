@@ -1,4 +1,4 @@
-const CACHE = 'bbs-v2';
+const CACHE = 'bbs-v3';
 const URLS = [
   '/',
   '/styles.css',
@@ -11,6 +11,7 @@ const URLS = [
   '/clanky/vitazi-kategorie.html',
   '/ochrana-osobnych-udajov.html',
   '/nav.html',
+  '/favicon.svg',
   '/head_photo.jpg'
 ];
 

@@ -26,6 +26,9 @@
           document.documentElement.classList.remove('menu-open');
         });
       });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') document.documentElement.classList.remove('menu-open');
+      });
     }
 
     /* aria-current="page" */
@@ -64,6 +67,7 @@
   var lb = document.getElementById('lightbox');
   if (lb) {
     var items = document.querySelectorAll('.gi');
+    items.forEach(function(item) { item.setAttribute('tabindex', '0'); });
     var lbImgWrap = document.getElementById('lbImgWrap');
     var lbPlaceholder = document.getElementById('lbPlaceholder');
     var lbCap = document.getElementById('lbCap');
@@ -94,14 +98,14 @@
         img.onerror = function() {
           img.remove();
           lbPlaceholder.querySelector('.gi-lbl').textContent = label || 'Nahrať fotografiu';
-          lbPlaceholder.querySelector('.lb-placeholder-txt').textContent = 'Súbor ' + src + ' sa nenašiel';
+          lbPlaceholder.querySelector('.lb-placeholder-txt').textContent = 'Fotografia čoskoro pribudne';
           lbPlaceholder.style.display = 'flex';
         };
         img.src = src;
         lbImgWrap.appendChild(img);
       } else {
         lbPlaceholder.querySelector('.gi-lbl').textContent = label || 'Pridať fotografiu';
-        lbPlaceholder.querySelector('.lb-placeholder-txt').textContent = 'Nahraďte súborom v galérii';
+        lbPlaceholder.querySelector('.lb-placeholder-txt').textContent = 'Fotografia čoskoro pribudne';
         lbPlaceholder.style.display = 'flex';
       }
 
@@ -114,6 +118,7 @@
         lb.classList.add('active');
         document.body.style.overflow = 'hidden';
         loadItem(i);
+        setTimeout(function() { if (lbFirst) lbFirst.focus(); }, 50);
       });
     });
 
@@ -123,19 +128,33 @@
       var img = lbImgWrap.querySelector('img');
       if (img) img.remove();
       lbPlaceholder.style.display = 'flex';
+      var ci = currentIndex;
       currentIndex = -1;
+      if (items[ci]) items[ci].focus();
     }
 
     lbClose.addEventListener('click', closeLB);
     lb.addEventListener('click', function(e) { if (e.target === lb) closeLB(); });
-    document.addEventListener('keydown', function(e) {
-      if (!lb.classList.contains('active')) return;
+
+    var lbFocusable = lb.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    var lbFirst = lbFocusable[0];
+    var lbLast = lbFocusable[lbFocusable.length - 1];
+
+    lb.addEventListener('keydown', function(e) {
+      if (e.key === 'Tab') {
+        if (e.shiftKey) {
+          if (document.activeElement === lbFirst) { e.preventDefault(); lbLast.focus(); }
+        } else {
+          if (document.activeElement === lbLast) { e.preventDefault(); lbFirst.focus(); }
+        }
+      }
       if (e.key === 'Escape') closeLB();
       if (e.key === 'ArrowLeft' && currentIndex > 0) loadItem(currentIndex - 1);
       if (e.key === 'ArrowRight' && currentIndex < items.length - 1) loadItem(currentIndex + 1);
     });
     lbPrev.addEventListener('click', function() { if (currentIndex > 0) loadItem(currentIndex - 1); });
     lbNext.addEventListener('click', function() { if (currentIndex < items.length - 1) loadItem(currentIndex + 1); });
+
   }
 
   /* ── Service worker ── */

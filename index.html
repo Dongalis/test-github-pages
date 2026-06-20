@@ -286,6 +286,7 @@
     .consent-text a:hover { text-decoration:underline; }
     .submit-row { display:flex; align-items:center; gap:1rem; flex-wrap:wrap; }
     .submit-row .form-ok { margin:0; }
+    .submit-row .form-err { margin:0; }
 
     /* ── FOOTER ── */
     .f-staff { display:flex; flex-direction:column; gap:5px; align-items:center; }
@@ -555,16 +556,16 @@
         </div>
       </div>
 
-      <form class="form reveal d2" id="contactForm">
+      <form class="form reveal d2" id="contactForm" novalidate>
         <input type="hidden" name="_subject" value="Big Band Storm - kontaktný formulár">
         <div class="frow">
           <div class="field">
             <label for="f-name">Vaše meno</label>
-            <input type="text" id="f-name" name="name" placeholder="Ján Novák" required oninvalid="this.setCustomValidity('Vyplňte prosím svoje meno')" oninput="this.setCustomValidity('')">
+            <input type="text" id="f-name" name="name" placeholder="Ján Novák" required>
           </div>
           <div class="field">
             <label for="f-email">Emailová adresa</label>
-            <input type="email" id="f-email" name="email" placeholder="vas@email.com" required oninvalid="this.setCustomValidity('Vyplňte prosím platnú emailovú adresu')" oninput="this.setCustomValidity('')">
+            <input type="email" id="f-email" name="email" placeholder="vas@email.com" required>
           </div>
         </div>
         <div class="field">
@@ -579,20 +580,20 @@
         </div>
         <div class="field">
           <label for="f-msg">Správa</label>
-          <textarea id="f-msg" name="message" placeholder="Povedzte nám o vašej akcii, otázke, alebo len pozdravte…" required oninvalid="this.setCustomValidity('Napíšte prosím svoju správu')" oninput="this.setCustomValidity('')"></textarea>
+          <textarea id="f-msg" name="message" placeholder="Povedzte nám o vašej akcii, otázke, alebo len pozdravte…" required></textarea>
         </div>
         <div class="field consent-field">
           <label class="consent-row">
-            <input type="checkbox" id="f-consent" name="consent" required oninvalid="this.setCustomValidity('Pre odoslanie formulára je potrebný súhlas so spracovaním údajov')" oninput="this.setCustomValidity('')">
+            <input type="checkbox" id="f-consent" name="consent" required>
             <span class="check-box"></span>
             <span class="consent-label">Súhlasím so spracovaním mojich osobných údajov (meno, email) za účelom odpovede na túto správu.</span>
           </label>
           <p class="consent-text">Odoslaním formulára odošlete údaje cez FormSubmit.co, ktoré nám ich prepošle emailom. Viac v <a href="ochrana-osobnych-udajov.html">ochrane osobných údajov</a>.</p>
         </div>
-        <div class="form-err" id="formErr">✗ Prosím, vyplňte všetky povinné polia.</div>
         <div class="submit-row">
           <button type="submit" class="btn-p">Odoslať správu</button>
           <div class="form-ok" id="formOk">✓ Správa odoslaná! Ozveme sa čoskoro.</div>
+          <div class="form-err" id="formErr">✗ Prosím, vyplňte všetky povinné polia.</div>
         </div>
       </form>
 
@@ -637,9 +638,24 @@
 
   const form = document.getElementById('contactForm');
   const formOk = document.getElementById('formOk');
+  const formErr = document.getElementById('formErr');
   if (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      formOk.style.display = 'none';
+      formErr.style.display = 'none';
+
+      var name = document.getElementById('f-name').value.trim();
+      var email = document.getElementById('f-email').value.trim();
+      var msg = document.getElementById('f-msg').value.trim();
+      var consent = document.getElementById('f-consent').checked;
+
+      if (!name) { formErr.textContent = '✗ Vyplňte prosím svoje meno'; formErr.style.display = 'block'; return; }
+      if (!email) { formErr.textContent = '✗ Vyplňte prosím svoju emailovú adresu'; formErr.style.display = 'block'; return; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { formErr.textContent = '✗ Zadajte platnú emailovú adresu'; formErr.style.display = 'block'; return; }
+      if (!msg) { formErr.textContent = '✗ Napíšte prosím svoju správu'; formErr.style.display = 'block'; return; }
+      if (!consent) { formErr.textContent = '✗ Pre odoslanie je potrebný súhlas so spracovaním údajov'; formErr.style.display = 'block'; return; }
+
       var data = Object.fromEntries(new FormData(form));
       fetch('https://formsubmit.co/ajax/app.web3forms.com.immortal255@passmail.net', {
         method: 'POST',
@@ -648,7 +664,7 @@
       })
         .then(function(r) { return r.json(); })
         .then(function(r) { if (r.success) { form.reset(); formOk.style.display = 'block'; } })
-        .catch(function() { formOk.textContent = '✗ Chyba pri odosielaní. Skúste neskôr.'; formOk.style.display = 'block'; });
+        .catch(function() { formErr.textContent = '✗ Chyba pri odosielaní. Skúste neskôr.'; formErr.style.display = 'block'; });
     });
   }
 </script>

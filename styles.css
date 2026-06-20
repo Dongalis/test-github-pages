@@ -18,7 +18,6 @@ html { scroll-behavior: smooth; }
 }
 
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior: smooth; }
 body { font-family:'Raleway',sans-serif; background:var(--bg); color:var(--text); overflow-x:hidden; }
 :focus-visible { outline:2px solid var(--orange); outline-offset:2px; }
 #about, #achievements, #events, #gallery, #contact { scroll-margin-top:6rem; }

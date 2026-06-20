@@ -55,9 +55,11 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
 
-  /* ── Loader + fonts-ready ── */
+  /* ── Fonts-ready + loading spinner ── */
   var lt = setTimeout(function(){ document.documentElement.classList.add('show-loader'); }, 400);
-  (document.fonts ? document.fonts.ready : Promise.resolve()).then(function(){
+  var fr = document.fonts ? document.fonts.ready : Promise.resolve();
+  var fb = new Promise(function(r) { setTimeout(r, 3000); });
+  Promise.race([fr, fb]).then(function() {
     clearTimeout(lt);
     document.documentElement.classList.add('fonts-ready');
     document.documentElement.classList.remove('show-loader');

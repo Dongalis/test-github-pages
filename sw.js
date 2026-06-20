@@ -1,4 +1,4 @@
-const CACHE = 'bbs-v3';
+const CACHE = 'bbs-v4';
 const URLS = [
   '/',
   '/styles.css',

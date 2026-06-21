@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bigbandstorm.sk/sitemap.xml
+Sitemap: https://bigband.test.nemeckay.net/sitemap.xml

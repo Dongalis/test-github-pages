@@ -43,9 +43,9 @@
     /* Nav scroll (transparent → opaque) */
     var nav = document.getElementById('navbar');
     if (nav) {
-      window.addEventListener('scroll', function() {
-        nav.classList.toggle('scrolled', window.scrollY > 60);
-      });
+      function checkNav() { nav.classList.toggle('scrolled', window.scrollY > 60); }
+      checkNav();
+      window.addEventListener('scroll', checkNav);
     }
   }
 

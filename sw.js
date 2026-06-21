@@ -1,3 +1,4 @@
+const DISABLED = true;
 const CACHE = 'bbs-v4';
 const URLS = [
   '/',
@@ -16,11 +17,13 @@ const URLS = [
 ];
 
 self.addEventListener('install', function(e) {
+  if (DISABLED) return;
   e.waitUntil(caches.open(CACHE).then(function(c) { return c.addAll(URLS); }));
   self.skipWaiting();
 });
 
 self.addEventListener('activate', function(e) {
+  if (DISABLED) return;
   e.waitUntil(
     caches.keys().then(function(keys) {
       return Promise.all(keys.filter(function(k) { return k !== CACHE; }).map(function(k) { return caches.delete(k); }));
@@ -29,6 +32,7 @@ self.addEventListener('activate', function(e) {
 });
 
 self.addEventListener('fetch', function(e) {
+  if (DISABLED) { e.respondWith(fetch(e.request)); return; }
   e.respondWith(
     caches.match(e.request).then(function(r) { return r || fetch(e.request); })
   );

@@ -301,6 +301,18 @@
       .gi:nth-child(1) { grid-column:span 12; }
       .gi:nth-child(2),.gi:nth-child(3) { grid-column:span 6; }
       .gi:nth-child(4),.gi:nth-child(5),.gi:nth-child(6) { grid-column:span 4; }
+      #achievements .grid-2 {
+        display:flex; gap:1rem; overflow-x:auto; scroll-snap-type:x mandatory;
+        -webkit-overflow-scrolling:touch; padding:0 .5rem .5rem; margin-top:2rem;
+      }
+      #achievements .grid-2 .ach-card {
+        flex:0 0 calc(100% - 4rem); scroll-snap-align:center;
+      }
+      #achievements .grid-2::before,
+      #achievements .grid-2::after {
+        content:''; flex:0 0 2rem; flex-shrink:0;
+        pointer-events:none;
+      }
     }
     @media(max-width:560px) {
       #hero { max-height:none; }
@@ -423,26 +435,26 @@
       <p class="ach-section-desc">S hrdosťou sa môžeme pochváliť výsledkami z celoslovenských súťaží a medzinárodných turné.</p>
     </div>
 
-    <div class="grid-2">
-      <a href="clanky/vitazi-kategorie.html" class="card ach-card reveal d1" style="text-decoration:none;display:block">
+    <div class="grid-2 reveal">
+      <a href="clanky/vitazi-kategorie.html" class="card ach-card" style="text-decoration:none;display:block">
         <div class="ach-icon">🏆</div>
         <div class="ach-title">Víťazi kategórie</div>
         <div class="ach-desc">Na celoslovenských súťažiach sme opakovane zvíťazili vo svojej kategórii a získali sme uznanie poroty za našu hudobnú interpretáciu.</div>
         <div class="ach-tag">1. miesto</div>
       </a>
-      <a href="clanky/zlate-pasmo.html" class="card ach-card reveal d2" style="text-decoration:none;display:block">
+      <a href="clanky/zlate-pasmo.html" class="card ach-card" style="text-decoration:none;display:block">
         <div class="ach-icon">🥇</div>
         <div class="ach-title">Zlaté pásmo</div>
         <div class="ach-desc">Pravidelne dosahujeme najvyššie hodnotenie „zlaté pásmo" v súťažiach big bandov, čo je dôkazom našej kvality a tvrdej práce.</div>
         <div class="ach-tag">Najvyššie hodnotenie</div>
       </a>
-      <a href="clanky/turne-bologna.html" class="card ach-card reveal d1" style="text-decoration:none;display:block">
+      <a href="clanky/turne-bologna.html" class="card ach-card" style="text-decoration:none;display:block">
         <div class="ach-icon">🇮🇹</div>
         <div class="ach-title">Turné Bologna 2025</div>
         <div class="ach-desc">V lete 2025 sme absolvovali turné v talianskej Bologni, kde sme reprezentovali Slovensko a priniesli sme swing a jazz na medzinárodné pódium.</div>
         <div class="ach-tag">Taliansko 2025</div>
       </a>
-      <a href="o-nas/" class="card ach-card reveal d2" style="text-decoration:none;display:block">
+      <a href="o-nas/" class="card ach-card" style="text-decoration:none;display:block">
         <div class="ach-icon">🎵</div>
         <div class="ach-title">Pravidelné úspechy</div>
         <div class="ach-desc">Okrem víťazstiev a zlatých pásiem sme získali aj viacero čestných uznaní a špeciálnych cien za najlepšiu interpretáciu jazzových skladieb.</div>
